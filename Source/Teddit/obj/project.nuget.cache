@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o4igbh8tdfk=",
+  "dgSpecHash": "Tsa+qEqdUfg=",
   "success": true,
-  "projectFilePath": "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj",
+  "projectFilePath": "d:\\code projects\\Solar Expanse\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Peter\\.nuget\\packages\\yamldotnet\\13.7.1\\yamldotnet.13.7.1.nupkg.sha512"
   ],

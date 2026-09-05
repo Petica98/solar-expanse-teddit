@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj": {}
+    "d:\\code projects\\Solar Expanse\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj": {}
   },
   "projects": {
-    "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj": {
+    "d:\\code projects\\Solar Expanse\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj",
+        "projectUniqueName": "d:\\code projects\\Solar Expanse\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
         "projectName": "Teddit",
-        "projectPath": "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj",
+        "projectPath": "d:\\code projects\\Solar Expanse\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
         "packagesPath": "C:\\Users\\Peter\\.nuget\\packages\\",
-        "outputPath": "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\obj\\",
+        "outputPath": "d:\\code projects\\Solar Expanse\\solar-expanse-teddit\\Source\\Teddit\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

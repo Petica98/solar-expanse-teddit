@@ -45,3 +45,27 @@ d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Ted
 d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Threading.Overlapped.dll
 d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Xml.XPath.XDocument.dll
 d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.csproj.Up2Date
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\Teddit.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\Teddit.pdb
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\YamlDotNet.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Data.Common.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Diagnostics.StackTrace.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Diagnostics.Tracing.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Globalization.Extensions.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.IO.Compression.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Net.Http.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Net.Sockets.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Runtime.Serialization.Primitives.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Security.Cryptography.Algorithms.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Security.SecureString.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Threading.Overlapped.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\bin\Debug\System.Xml.XPath.XDocument.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.csproj.AssemblyReference.cache
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.GeneratedMSBuildEditorConfig.editorconfig
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.AssemblyInfoInputs.cache
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.AssemblyInfo.cs
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.csproj.CoreCompileInputs.cache
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.sourcelink.json
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.csproj.Up2Date
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.dll
+d:\code projects\Solar Expanse\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.pdb
