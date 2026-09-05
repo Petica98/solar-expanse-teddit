@@ -22,3 +22,26 @@ C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Source\Teddit\obj
 C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.csproj.Up2Date
 C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.dll
 C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Source\Teddit\obj\Debug\Teddit.pdb
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.csproj.AssemblyReference.cache
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.GeneratedMSBuildEditorConfig.editorconfig
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.AssemblyInfoInputs.cache
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.AssemblyInfo.cs
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.csproj.CoreCompileInputs.cache
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.pdb
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\Teddit.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\Teddit.pdb
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\YamlDotNet.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Data.Common.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Diagnostics.StackTrace.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Diagnostics.Tracing.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Globalization.Extensions.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.IO.Compression.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Net.Http.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Net.Sockets.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Runtime.Serialization.Primitives.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Security.Cryptography.Algorithms.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Security.SecureString.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Threading.Overlapped.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\bin\Debug\System.Xml.XPath.XDocument.dll
+d:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Debug\Teddit.csproj.Up2Date

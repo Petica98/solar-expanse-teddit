@@ -22,3 +22,10 @@ C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Source\Teddit\obj
 C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Source\Teddit\obj\Release\Teddit.csproj.Up2Date
 C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Source\Teddit\obj\Release\Teddit.dll
 C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Source\Teddit\obj\Release\Teddit.pdb
+D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Release\Teddit.csproj.AssemblyReference.cache
+D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Release\Teddit.GeneratedMSBuildEditorConfig.editorconfig
+D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Release\Teddit.AssemblyInfoInputs.cache
+D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Release\Teddit.AssemblyInfo.cs
+D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Release\Teddit.csproj.CoreCompileInputs.cache
+D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Release\Teddit.dll
+D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit\Source\Teddit\obj\Release\Teddit.pdb

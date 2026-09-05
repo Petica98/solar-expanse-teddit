@@ -18,66 +18,66 @@
 
   <ItemGroup>
     <Reference Include="BepInEx">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\core\BepInEx.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="0Harmony">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\core\0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Sirenix.Serialization.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Sirenix.Serialization.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Sirenix.Serialization.Config.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Sirenix.Utilities.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Sirenix.Utilities.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Newtonsoft.Json.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="BehaviorDesigner.Runtime">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\BehaviorDesigner.Runtime.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\BehaviorDesigner.Runtime.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.TextCoreFontEngineModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\Unity.TextMeshPro.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Solar Expanse\Solar Expanse_Data\Managed\UnityEngine.UIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>
@@ -90,9 +90,9 @@
 
   <Target Name="DeployToBepInEx" AfterTargets="Build">
     <PropertyGroup>
-      <PluginDir>C:\Program Files (x86)\Steam\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit</PluginDir>
-      <RepoPluginDir>C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit\Teddit</RepoPluginDir>
-      <RepoRootDir>C:\Users\parft\Documents\SolarExpanseMods\solar-expanse-teddit</RepoRootDir>
+      <PluginDir>D:\SteamLibrary\steamapps\common\Solar Expanse\BepInEx\plugins\Teddit</PluginDir>
+      <RepoPluginDir>D:\code projects\Solar Expanse\solar-expanse-teddit\Teddit</RepoPluginDir>
+      <RepoRootDir>D:\code projects\Solar Expanse\solar-expanse-teddit</RepoRootDir>
       <ExampleModDir>$(RepoRootDir)\example_mod</ExampleModDir>
     </PropertyGroup>
 

@@ -1,29 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj": {}
+    "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj": {}
   },
   "projects": {
-    "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj": {
+    "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
+        "projectUniqueName": "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj",
         "projectName": "Teddit",
-        "projectPath": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\Teddit.csproj",
-        "packagesPath": "C:\\Users\\parft\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\parft\\Documents\\SolarExpanseMods\\solar-expanse-teddit\\Source\\Teddit\\obj\\",
+        "projectPath": "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\Teddit.csproj",
+        "packagesPath": "C:\\Users\\Peter\\.nuget\\packages\\",
+        "outputPath": "d:\\SteamLibrary\\steamapps\\common\\Solar Expanse\\BepInEx\\plugins\\Teddit\\Source\\Teddit\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\parft\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Peter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net471"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net471": {
+            "framework": "net471",
             "targetAlias": "net471",
             "projectReferences": {}
           }
@@ -37,25 +45,21 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net471": {
+          "framework": "net471",
           "targetAlias": "net471",
           "dependencies": {
-            "Microsoft.NETFramework.ReferenceAssemblies": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[1.0.3, )",
-              "autoReferenced": true
-            },
             "YamlDotNet": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[13.7.1, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.420\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -317,14 +317,14 @@ namespace Teddit
                 {
                     sb.AppendLine($"  canBuildBy: {YamlScalar(fd.CanBuildParameter.canBuildBy.ToString())}");
                     if (fd.CanBuildParameter.canBuildBy == CanBuildParameter.ECanBuild.countOnPlanet)
-                        sb.AppendLine($"  countOnPlanet: {fd.CanBuildParameter.countOnPlanet}");
+                        sb.AppendLine($"  countOnPlanet: {fd.CanBuildParameter.CountOnPlanet}");
                 }
                 string facilityIconRef = FacilityCreator.GetSpriteReference(fd.Sprite);
                 if (!string.IsNullOrEmpty(facilityIconRef))
                     sb.AppendLine($"  iconRef: {YamlScalar(facilityIconRef)}");
 
                 float timeToBuild = _timeToBuildFi != null ? (float)_timeToBuildFi.GetValue(fd) : 0f;
-                bool ctorEquip   = _ctorEquipFi  != null ? (bool)_ctorEquipFi.GetValue(fd)   : true;
+                bool ctorEquip = _ctorEquipFi != null ? (bool)_ctorEquipFi.GetValue(fd) : true;
                 sb.AppendLine($"  timeToBuildInDays: {FormatFloat(timeToBuild)}");
                 sb.AppendLine($"  constructionEquipmentCountIsRequired: {FormatBool(ctorEquip)}");
                 sb.AppendLine($"  facilityItemClass: {YamlScalar(fd.FacilityItemClass?.Name)}");
@@ -399,7 +399,7 @@ namespace Teddit
                 AppendStringList(sb, "  resourcesToMine", resourcesToMine);
 
                 // RefinerData
-                var refinerInput  = new Dictionary<string, double>();
+                var refinerInput = new Dictionary<string, double>();
                 var refinerOutput = new Dictionary<string, double>();
                 if (fd.specialAbilityFacilityNew.HasFlag(ESpecialAbilityFacilityNew.Refiner) && _refinerFi != null)
                 {
@@ -407,11 +407,11 @@ namespace Teddit
                     if (rd != null)
                     {
                         Type rdType = rd.GetType();
-                        DumpRefinerList(rd, rdType, "Input",  refinerInput);
+                        DumpRefinerList(rd, rdType, "Input", refinerInput);
                         DumpRefinerList(rd, rdType, "Output", refinerOutput);
                     }
                 }
-                AppendDict(sb, "  refinerInput",  refinerInput);
+                AppendDict(sb, "  refinerInput", refinerInput);
                 AppendDict(sb, "  refinerOutput", refinerOutput);
 
                 // Byproducts
@@ -422,8 +422,8 @@ namespace Teddit
                             byproducts.Add(new ByproductEntry
                             {
                                 Resource = bp.resource.ID,
-                                Rate     = bp.rate,
-                                State    = bp.state.ToString(),
+                                Rate = bp.rate,
+                                State = bp.state.ToString(),
                             });
                 AppendByproducts(sb, "  byproducts", byproducts);
 
@@ -519,10 +519,10 @@ namespace Teddit
                 foreach (object item in items)
                 {
                     if (item == null) continue;
-                    var resFi      = item.GetType().GetField("resource");
-                    var rateFi     = item.GetType().GetField("ratePerDay");
-                    var res        = resFi?.GetValue(item) as ResourceDefinition;
-                    var rate       = rateFi != null ? (double)rateFi.GetValue(item) : 0.0;
+                    var resFi = item.GetType().GetField("resource");
+                    var rateFi = item.GetType().GetField("ratePerDay");
+                    var res = resFi?.GetValue(item) as ResourceDefinition;
+                    var rate = rateFi != null ? (double)rateFi.GetValue(item) : 0.0;
                     if (res != null) target[res.ID] = rate;
                 }
             }
@@ -545,10 +545,10 @@ namespace Teddit
 
         // ── Spacecraft ────────────────────────────────────────────────────────
 
-        static readonly FieldInfo _scHullFi    = typeof(Data.ScriptableObject.SpacecraftType)
+        static readonly FieldInfo _scHullFi = typeof(Data.ScriptableObject.SpacecraftType)
             .GetField("hull", BindingFlags.NonPublic | BindingFlags.Instance);
         static readonly FieldInfo _scIsLockedFi = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.SpacecraftType), "isLocked");
-        static readonly FieldInfo _lvPriceFi    = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "priceBase");
+        static readonly FieldInfo _lvPriceFi = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "priceBase");
 
         static void DumpSpacecraft(AllScriptableObjectManager allSO, string dir)
         {
@@ -629,9 +629,9 @@ namespace Teddit
 
         // ── Launch Vehicles ───────────────────────────────────────────────────
 
-        static readonly FieldInfo _lvIsLockedFi        = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "isLocked");
-        static readonly FieldInfo _lvForCycleMissionFi  = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "forCycleMission");
-        static readonly FieldInfo _lvFakeForFacilityFi  = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "fakeForFacility");
+        static readonly FieldInfo _lvIsLockedFi = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "isLocked");
+        static readonly FieldInfo _lvForCycleMissionFi = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "forCycleMission");
+        static readonly FieldInfo _lvFakeForFacilityFi = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "fakeForFacility");
         static readonly FieldInfo _lvCanBuyMaxPayloadFi = ScriptableObjectPatcher.FindField(typeof(Data.ScriptableObject.LaunchVehicleType), "canBuyMaxPayload");
 
         static void DumpLaunchVehicles(AllScriptableObjectManager allSO, string dir)
@@ -736,25 +736,25 @@ namespace Teddit
             Plugin.Log.LogInfo($"[DataDumper] research.yaml — {count} entries");
         }
 
-        static readonly FieldInfo _rdSubStageFi       = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "subStage");
-        static readonly FieldInfo _rdShowInTreeFi     = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "showInTree");
-        static readonly FieldInfo _rdParentFi         = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "newViewResearchTreeParent");
-        static readonly FieldInfo _rdUnlockDataFi     = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "unlockData");
-        static readonly FieldInfo _rdUnlockDataListFi  = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "unlockDataList");
-        static readonly Type      _udType              = typeof(ResearchDefinition).Assembly.GetType("Game.CompanyScripts.UnlockData");
-        static readonly FieldInfo _udActionFi          = _udType?.GetField("actionUnlock", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udParam1Fi          = _udType?.GetField("parameter1",   BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udParam2Fi          = _udType?.GetField("parameter2",   BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udBonusFi           = _udType?.GetField("bonus", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udBonusParamFi      = _udType?.GetField("bonusParameter", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udIdsFi             = _udType?.GetField("id_ComponentOrOther", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udIdsShowUiFi       = _udType?.GetField("id_ComponentOrOtherBoolShowUI", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udUnlockUiFi        = _udType?.GetField("unlockUIElement", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udUnlockEndGameFi   = _udType?.GetField("unlockEndGame", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _rdSubStageFi = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "subStage");
+        static readonly FieldInfo _rdShowInTreeFi = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "showInTree");
+        static readonly FieldInfo _rdParentFi = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "newViewResearchTreeParent");
+        static readonly FieldInfo _rdUnlockDataFi = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "unlockData");
+        static readonly FieldInfo _rdUnlockDataListFi = ScriptableObjectPatcher.FindField(typeof(ResearchDefinition), "unlockDataList");
+        static readonly Type _udType = typeof(ResearchDefinition).Assembly.GetType("Game.CompanyScripts.UnlockData");
+        static readonly FieldInfo _udActionFi = _udType?.GetField("actionUnlock", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udParam1Fi = _udType?.GetField("parameter1", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udParam2Fi = _udType?.GetField("parameter2", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udBonusFi = _udType?.GetField("bonus", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udBonusParamFi = _udType?.GetField("bonusParameter", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udIdsFi = _udType?.GetField("id_ComponentOrOther", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udIdsShowUiFi = _udType?.GetField("id_ComponentOrOtherBoolShowUI", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udUnlockUiFi = _udType?.GetField("unlockUIElement", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udUnlockEndGameFi = _udType?.GetField("unlockEndGame", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         static readonly FieldInfo _udUnlockContractAdvanceFi = _udType?.GetField("unlockContractAdvance", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udStartGameEpochFi  = _udType?.GetField("startGameEpoch", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udAsteroidFi        = _udType?.GetField("idObjectInfoAsteroid", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        static readonly FieldInfo _udAllowPullFi       = _udType?.GetField("idObjectInfoAllowPullToOrbit", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udStartGameEpochFi = _udType?.GetField("startGameEpoch", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udAsteroidFi = _udType?.GetField("idObjectInfoAsteroid", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        static readonly FieldInfo _udAllowPullFi = _udType?.GetField("idObjectInfoAllowPullToOrbit", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
         static void AppendResearchUnlocks(StringBuilder sb, ResearchDefinition rd)
         {
@@ -863,23 +863,23 @@ namespace Teddit
         // ── Contracts ──────────────────────────────────────────────────────────
 
         static readonly FieldInfo _cdOverrideTranslationFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "overrideTranslation");
-        static readonly FieldInfo _cdRewardsFi             = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "rewards");
-        static readonly FieldInfo _cdRewardsStartFi        = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "rewardsStartContract");
-        static readonly FieldInfo _cdObjectivesFi          = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "objectives");
-        static readonly FieldInfo _cdHelpObjectivesFi      = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "helpObjectives");
-        static readonly FieldInfo _cdHideUIFi              = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "hideUI");
-        static readonly FieldInfo _cdSkipForAIFi           = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "skipForAI");
-        static readonly FieldInfo _cdIsFinalFi             = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isFinalContract");
-        static readonly FieldInfo _cdIsFinalDemoFi         = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isFinalContractToEndDemo");
-        static readonly FieldInfo _cdYearsToExpireFi       = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "yearsToExpire");
-        static readonly FieldInfo _cdDateStartFi           = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStart");
-        static readonly FieldInfo _cdDateStartLimitFi      = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStartLimit");
-        static readonly FieldInfo _cdDateStartEnableFi     = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStartEnable");
-        static readonly FieldInfo _cdStageTutorialFi       = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "stageTutorialToActive");
-        static readonly FieldInfo _cdTextNextContractFi    = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "textToShowNextContractKeyId");
-        static readonly FieldInfo _cdUnlockContractFi      = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "unlockContractHelpNotUse");
-        static readonly FieldInfo _cdIsLockedByFi          = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isLockByContractHelpNotUse");
-        static readonly FieldInfo _cdUnlockResearchFi      = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "unlockResearchDefinitionHelpNotUse");
+        static readonly FieldInfo _cdRewardsFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "rewards");
+        static readonly FieldInfo _cdRewardsStartFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "rewardsStartContract");
+        static readonly FieldInfo _cdObjectivesFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "objectives");
+        static readonly FieldInfo _cdHelpObjectivesFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "helpObjectives");
+        static readonly FieldInfo _cdHideUIFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "hideUI");
+        static readonly FieldInfo _cdSkipForAIFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "skipForAI");
+        static readonly FieldInfo _cdIsFinalFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isFinalContract");
+        static readonly FieldInfo _cdIsFinalDemoFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isFinalContractToEndDemo");
+        static readonly FieldInfo _cdYearsToExpireFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "yearsToExpire");
+        static readonly FieldInfo _cdDateStartFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStart");
+        static readonly FieldInfo _cdDateStartLimitFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStartLimit");
+        static readonly FieldInfo _cdDateStartEnableFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "dateTimeStringStartEnable");
+        static readonly FieldInfo _cdStageTutorialFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "stageTutorialToActive");
+        static readonly FieldInfo _cdTextNextContractFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "textToShowNextContractKeyId");
+        static readonly FieldInfo _cdUnlockContractFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "unlockContractHelpNotUse");
+        static readonly FieldInfo _cdIsLockedByFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "isLockByContractHelpNotUse");
+        static readonly FieldInfo _cdUnlockResearchFi = ScriptableObjectPatcher.FindField(typeof(ContractDefinition), "unlockResearchDefinitionHelpNotUse");
 
         static string ObjectName(ObjectInfoManager oim, int id)
         {
@@ -1349,9 +1349,9 @@ namespace Teddit
             if (value.Length == 0) return "\"\"";
             // Quote if starts with special char or contains colon-space, #, or other YAML metacharacters
             bool needsQuotes = value[0] == '\'' || value[0] == '"' || value[0] == '&'
-                            || value[0] == '*'  || value[0] == '!' || value[0] == '|'
-                            || value[0] == '>'  || value[0] == '%' || value[0] == '@'
-                            || value[0] == '`'  || value[0] == '{'  || value[0] == '['
+                            || value[0] == '*' || value[0] == '!' || value[0] == '|'
+                            || value[0] == '>' || value[0] == '%' || value[0] == '@'
+                            || value[0] == '`' || value[0] == '{' || value[0] == '['
                             || value.Contains(": ") || value.Contains(" #")
                             || value.Contains("\n") || value.Contains("\\");
             if (needsQuotes)
@@ -1366,9 +1366,9 @@ namespace Teddit
             return value;
         }
 
-        static string FormatFloat(float v)   => v.ToString("G", System.Globalization.CultureInfo.InvariantCulture);
-        static string FormatDouble(double v)  => v.ToString("G", System.Globalization.CultureInfo.InvariantCulture);
-        static string FormatBool(bool v)      => v ? "true" : "false";
+        static string FormatFloat(float v) => v.ToString("G", System.Globalization.CultureInfo.InvariantCulture);
+        static string FormatDouble(double v) => v.ToString("G", System.Globalization.CultureInfo.InvariantCulture);
+        static string FormatBool(bool v) => v ? "true" : "false";
 
         static string FormatNullableFloat(float? v)
         {
@@ -1452,8 +1452,8 @@ namespace Teddit
         class ByproductEntry
         {
             public string Resource { get; set; }
-            public double Rate     { get; set; }
-            public string State    { get; set; }
+            public double Rate { get; set; }
+            public string State { get; set; }
         }
     }
 }
