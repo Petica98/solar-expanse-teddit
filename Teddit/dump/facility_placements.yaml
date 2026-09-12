@@ -1,0 +1,163 @@
+# Initial facilities present on each body, grouped by company.
+# Format matches facility_placements.yaml so entries can be copy-pasted.
+# Duplicate descriptors are collapsed to a single entry with `count:`.
+
+# EARTH
+EARTH:
+  - company: CNSA
+    facility: build_habitat
+    count: 2
+  - company: CNSA
+    facility: build_hq
+  - company: CNSA
+    facility: build_metalmine
+  - company: CNSA
+    facility: build_observatory
+  - company: CNSA
+    facility: build_power_solar
+    count: 2
+  - company: CNSA
+    facility: build_raremine
+  - company: CNSA
+    facility: build_veh_assembly
+  - company: CNSA
+    facility: module_hubel_telescope
+  - company: ESA
+    facility: build_habitat
+    count: 2
+  - company: ESA
+    facility: build_hq
+  - company: ESA
+    facility: build_lab
+  - company: ESA
+    facility: build_noblegasmine
+  - company: ESA
+    facility: build_observatory
+  - company: ESA
+    facility: build_power_solar
+    count: 3
+  - company: ESA
+    facility: build_veh_assembly
+  - company: ESA
+    facility: module_hubel_telescope
+  - company: NASA
+    facility: build_electrolysis
+  - company: NASA
+    facility: build_habitat
+    count: 2
+  - company: NASA
+    facility: build_hq
+  - company: NASA
+    facility: build_icemine
+  - company: NASA
+    facility: build_observatory
+  - company: NASA
+    facility: build_power_solar
+    count: 3
+  - company: NASA
+    facility: build_veh_assembly
+  - company: NASA
+    facility: module_hubel_telescope
+  - company: Roscosmos
+    facility: build_carbonmine
+  - company: Roscosmos
+    facility: build_farm
+  - company: Roscosmos
+    facility: build_habitat
+    count: 2
+  - company: Roscosmos
+    facility: build_hq
+  - company: Roscosmos
+    facility: build_icemine
+  - company: Roscosmos
+    facility: build_observatory
+  - company: Roscosmos
+    facility: build_power_solar
+    count: 2
+  - company: Roscosmos
+    facility: build_veh_assembly
+  - company: Roscosmos
+    facility: module_hubel_telescope
+  - company: Solex
+    facility: build_fuel
+  - company: Solex
+    facility: build_habitat
+    count: 2
+  - company: Solex
+    facility: build_hq
+  - company: Solex
+    facility: build_icemine
+  - company: Solex
+    facility: build_observatory
+  - company: Solex
+    facility: build_power_solar
+    count: 2
+  - company: Solex
+    facility: build_veh_assembly
+  - company: Solex
+    facility: module_hubel_telescope
+  - company: world_government
+    facility: build_alloysmelting
+    count: 20
+  - company: world_government
+    facility: build_carbonmine
+    count: 60
+  - company: world_government
+    facility: build_earthfarm
+    count: 2
+  - company: world_government
+    facility: build_electronicsfactory
+  - company: world_government
+    facility: build_exoticalloy
+  - company: world_government
+    facility: build_fuel
+    count: 10
+  - company: world_government
+    facility: build_fuelmine
+    count: 80
+  - company: world_government
+    facility: build_glass
+    count: 5
+  - company: world_government
+    facility: build_habitatcity
+    count: 27
+  - company: world_government
+    facility: build_hq
+  - company: world_government
+    facility: build_icemine
+    count: 100
+  - company: world_government
+    facility: build_metalmine
+    count: 20
+  - company: world_government
+    facility: build_noblegasmine
+    count: 5
+  - company: world_government
+    facility: build_polymerproduction
+    count: 10
+  - company: world_government
+    facility: build_power_carbon
+    count: 20
+  - company: world_government
+    facility: build_power_fuel_big
+  - company: world_government
+    facility: build_power_hydrogen
+    count: 20
+  - company: world_government
+    facility: build_power_nuke
+  - company: world_government
+    facility: build_power_solar
+    count: 100
+  - company: world_government
+    facility: build_power_wind
+    count: 100
+  - company: world_government
+    facility: build_raremine
+    count: 20
+  - company: world_government
+    facility: build_siliconmine
+    count: 200
+  - company: world_government
+    facility: build_uranmine
+    count: 15
+

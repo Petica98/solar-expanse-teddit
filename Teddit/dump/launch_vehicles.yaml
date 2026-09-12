@@ -140,18 +140,18 @@ id_Rocket_RocketType5:
   iconRef: alox_normal
   forCycleMission: false
   fakeForFacility: false
-  timeToBuildInDays: 60
+  timeToBuildInDays: 25
   constructionEquipmentCountIsRequired: true
   buildCost: 0
   buildResources:
-    id_resource_metal: 50
+    id_resource_metal: 20
     id_resource_water: 20
-  maxPayload: 30
+  maxPayload: 40
   maxFuelLoad: 10000
   costLaunch: 0
   exhaustV: 2.5
   reusability: 0
-  maintenanceCostPerDay: 1
+  maintenanceCostPerDay: 0
   canBuyMaxPayload: null
 
 # AL-ICE ROCKET (HEAVY) (LaunchVehicleType)
@@ -163,18 +163,18 @@ id_Rocket_RocketType6:
   iconRef: alox_heavy
   forCycleMission: false
   fakeForFacility: false
-  timeToBuildInDays: 120
+  timeToBuildInDays: 50
   constructionEquipmentCountIsRequired: true
   buildCost: 0
   buildResources:
-    id_resource_metal: 120
+    id_resource_metal: 50
     id_resource_water: 50
-  maxPayload: 300
+  maxPayload: 100
   maxFuelLoad: 10000
   costLaunch: 0
   exhaustV: 2.5
   reusability: 0
-  maintenanceCostPerDay: 1
+  maintenanceCostPerDay: 0
   canBuyMaxPayload: null
 
 # FALCON (LaunchVehicleType)

@@ -95,7 +95,7 @@ id_Spacecraft_InterstellarShip:
   cargoCapacity: 200000
   fuelCapacity: 500000
   thrust: 8E+07
-  exhaustV: 10000
+  exhaustV: 11000
   mass: 50000
   maxLifeSupport: 219000
   availableDeltaV: 100
@@ -348,7 +348,7 @@ spacecraft_chem_large:
   availableDeltaV: 100
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
-  maxPayload: null
+  maxPayload: 1000
 
 # HERMES (SpacecraftType)
 spacecraft_electric_small:
@@ -661,7 +661,7 @@ spacecraft_fusion_small:
   cargoCapacity: 5000
   fuelCapacity: 5000
   thrust: 6000000
-  exhaustV: 1200
+  exhaustV: 1000
   mass: 400
   maxLifeSupport: 4400
   availableDeltaV: 500
@@ -698,7 +698,7 @@ spacecraft_fusion_mid:
   cargoCapacity: 10000
   fuelCapacity: 3000
   thrust: 9800000
-  exhaustV: 4000
+  exhaustV: 2400
   mass: 500
   maxLifeSupport: 4380
   availableDeltaV: 100
@@ -735,13 +735,82 @@ spacecraft_fusion_large:
   cargoCapacity: 20000
   fuelCapacity: 5000
   thrust: 4E+07
-  exhaustV: 10000
+  exhaustV: 11000
   mass: 1000
   maxLifeSupport: 4380
   availableDeltaV: 100
   maximumAcceleration: 100
   maintenanceCostPerDay: 10
   maxPayload: null
+
+# METIS (SpacecraftType)
+spacecraft_electric_metis:
+  engineType: electric
+  orbitSC: false
+  solarSC: false
+  solarParameter: 10
+  isLocked: true
+  needLaunchVehicleToGoToMoon: true
+  buildOnlyLowOrbit: false
+  canByBuildByUser: true
+  lowOrbitContainer: false
+  magneticCatapult: false
+  reusability: 1
+  constanceAcceleration: false
+  isInterstellarShip: false
+  asteroidPullingShip: false
+  fuelType: id_resource_noblegas
+  iconRef: metis
+  timeToBuildInDays: 30
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 3
+  cargoCapacity: 0
+  fuelCapacity: 50
+  thrust: 40
+  exhaustV: 20
+  mass: 1
+  maxLifeSupport: 0
+  availableDeltaV: 100
+  maximumAcceleration: 100
+  maintenanceCostPerDay: 0
+  maxPayload: null
+
+# ARGO (SpacecraftType)
+spacecraft_chem_extralarge:
+  engineType: chemical
+  orbitSC: false
+  solarSC: false
+  solarParameter: 10
+  isLocked: true
+  needLaunchVehicleToGoToMoon: false
+  buildOnlyLowOrbit: false
+  canByBuildByUser: true
+  lowOrbitContainer: false
+  magneticCatapult: false
+  reusability: 1
+  constanceAcceleration: false
+  isInterstellarShip: false
+  asteroidPullingShip: false
+  fuelType: id_resource_fuel
+  iconRef: placeholder_icon
+  timeToBuildInDays: 120
+  constructionEquipmentCountIsRequired: true
+  buildCost: 0
+  buildResources:
+    id_resource_steel: 240
+    id_resource_plastic: 60
+  cargoCapacity: 400
+  fuelCapacity: 2000
+  thrust: 9600000
+  exhaustV: 5.4
+  mass: 100
+  maxLifeSupport: 480
+  availableDeltaV: 100
+  maximumAcceleration: 100
+  maintenanceCostPerDay: 10
+  maxPayload: 1000
 
 # SPACECRAFT_ASTEROID_PULLER_FORASTEROIDIMPACT (SpacecraftType)
 spacecraft_asteroid_puller_ForAsteroidImpact:
@@ -873,7 +942,7 @@ SpacecraftFakemagnetic_catapult:
   cargoCapacity: 2000
   fuelCapacity: 0
   thrust: 4.0002E+07
-  exhaustV: 12000
+  exhaustV: 13000
   mass: 10
   maxLifeSupport: 0
   availableDeltaV: 100

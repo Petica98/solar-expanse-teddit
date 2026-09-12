@@ -1,0 +1,4167 @@
+# Asteroid Base
+contract_asteroid_base:
+  title: Asteroid Base
+  description: Now that we know that asteroids are worthwhile, we need better infrastructure to capitalize on their resources. An extraction and refueling base for our resource carriers is needed to deliver riches mined in the belt.
+  descriptionEnd: "Asteroid Base
+The base has been constructed and is ready for operations. Now we can proceed with our exploitation of the asteroid belt."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: build_raremine
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      possessionType: ResourceModule
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: build_launch_pad
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      possessionType: ResourceModule
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 750000
+
+# Asteroid Supply Chain
+contract_asteroid_cyclic:
+  title: Asteroid Supply Chain
+  description: With asteroid mining underway, we still have to complete the last part of the profit chain - deliver it to our customers for sale. A set of cyclical missions bringing rare metals towards Earth will give us a large surplus to sell on the market.
+  descriptionEnd: "Asteroid Supply Chain
+Now that everything is set up, we can start making real profits. Our supply will perfectly deal with market shortcomings."
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_raremetal
+      howMuch: 2000
+      fromID: -1
+      toID: EARTH
+      possessionType: Resource
+      resourceTypeType: resorces
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 45000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_asteroid_trading
+
+# Asteroid Drop
+contract_asteroid_dropping:
+  title: Asteroid Drop
+  description: Now that we have tested our technology, it's time to use it for terraforming. Bring a water-rich asteroid to Mars in a controlled impact.
+  descriptionEnd: Excellent, the asteroid's resources will now be available for extraction and terraforming.
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: resorces
+      deliverEntireAsteroid: true
+      advance: true
+      objectSubTypeID: ObjectSubType.AsteroidDark
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 1000000000
+
+# Probing Lutetia
+contract_asteroid_first:
+  title: Probing Lutetia
+  description: If we want to establish a solid economy, we need to experiment with other places for resource extraction. Lutetia is one of the closest major asteroids. With the spectral signature of a metallic type asteroid, it has potential to be rich in metals rare on Earth. A closer look can confirm our suspicions.
+  descriptionEnd: "Probing Lutetia
+Resources cataloging started. We detected valuable siderophile elements ready for extraction in the samples. You've really proved the viability of asteroid mining! This is a big step in the space race."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_SelectLayer_Objective1
+      objectiveType: SelectLayer
+      layer: Asteroid
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_raremetal
+      howMuch: 5
+      fromID: 21 LUTETIA
+      toID: EARTH
+      possessionType: Resource
+      resourceTypeType: resorces
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_outer_jupiter1
+        parameter2: contract_asteroid_first
+        unlockContractAdvance: PartOfContract
+    - rewardType: Money
+      amount: 3600000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_asteroid_mining
+
+# Avoiding Armageddon
+contract_asteroid_impact:
+  title: Avoiding Armageddon
+  description: We have just detected an asteroid on an impact course with Earth! The impact is calculated to happen in several years, and will wipe out all life from our planet. This might be the most dreadful extinction event in history, a death sentence to our homeworld. We have received a nuclear device to stop the catastrophe - deliver it before time's up, or we are done. Good luck to us all.
+  descriptionEnd: "Avoiding Armageddon
+The asteroid has been destroyed! Shattered and its debris thrown off the course, it can no longer threaten us. Now we are not only a space company, but also saviors of the Earth!"
+  isLocked: true
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateTimeStringStartEnable: true
+  dateTimeStringStart: 2042-10-20 00:00:00
+  dateTimeStringStartLimit: 2049-01-01 00:00:00
+  dateStartActive: 01/01/1959
+  startID: EARTH
+  rewardsStartContract:
+    - rewardType: GiveObject
+      amount: 1
+      facility: module_contractitem
+      buildImmediately: true
+    - rewardType: Unlock
+      unlock:
+        action: UnlockDiscoverAsteroid
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_contractitem
+      howMuch: 1
+      fromID: -1
+      toID: EX0-99 EXTINCTOR
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      tutorialOnForThisObjective: false
+    - id: id_Contract_DetonateNuclearDevice_Objective1
+      objectiveType: DetonateNuclearDevice
+      howMuch: 10000
+      fromID: EX0-99 EXTINCTOR
+      toID: -1
+      dateTimeStringLimit: 2049-10-24 00:00:00
+      dateTimeStringLimit2: 2049-05-15 00:00:00
+      objectiveToMarkDoneAfterThisObjective: id_Contract_Deliver_Objective1
+  rewards:
+    - rewardType: Money
+      amount: 1500000
+
+# contract_asteroid_labs_Title
+contract_asteroid_labs:
+  title: contract_asteroid_labs_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: build_lab
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      possessionType: Facility
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 750000
+
+# Asteroid Mining
+contract_asteroid_mining:
+  title: Asteroid Mining
+  description: While we have examined the potential of mining asteroids, we still need to establish a permanent mining base on one. Deploy construction equipment to the asteroid belt so that we may begin building mining infrastructure.
+  descriptionEnd: "Asteroid Mining
+This is just the beginning - now that we can acquire building materials, whether by mining or transporting them, we will create bases to strip the belt bare."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: ShowTrivialWindow
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_construction
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_basemining
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: build_raremine
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      possessionType: ResourceModule
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 7000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_asteroid_outpost
+
+# Asteroid Colony
+contract_asteroid_outpost:
+  title: Asteroid Colony
+  description: To oversee our mining enterprise, we require a crew of miners and the facilities to house them. This way, we will be able to establish a 24/7 resource extraction and an uninterrupted supply.
+  descriptionEnd: "Asteroid Colony
+With the crew on site, we can optimize the resource extraction and oversee the entire process. Full scale exploitation can proceed. "
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: build_outpost
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      possessionType: Facility
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_human
+      howMuch: 10
+      fromID: -1
+      toID: -1
+      possessionType: Resource
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 4500000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_asteroid_cyclic
+
+# Asteroid Pulling
+contract_asteroid_pulling:
+  title: Asteroid Pulling
+  description: Our most recent engine design will allow us to move entire asteroids at the small price of building the engine itself and many tons of useless regolith. It's time to demonstrate this capability, and we've found a perfect little rock to show it off.
+  descriptionEnd: "Asteroid Pulling
+Everything worked as planned. Now Mars has a new moon, ready to be mined for its resources. With this technology, we can reshape the entire system."
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockDiscoverAsteroid
+    - rewardType: Unlock
+      unlock:
+        action: UnlockSetPushableOnlyToOrbitAsteroid
+    - rewardType: ShowTrivialWindow
+  objectives:
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_asteroid_engine_module
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: build_asteroid_engine_module
+      howMuch: 1
+      fromID: -1
+      toID: 098-Y PEPPIN
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: 098-Y PEPPIN
+      toID: MARS [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      deliverEntireAsteroid: true
+      checkCompletedOnStart: false
+  rewards:
+    - rewardType: Money
+      amount: 15000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_asteroid_dropping
+
+# Asteroid Sample
+contract_asteroid_sample:
+  title: Asteroid Sample
+  description: Strike the rock! We found great potential on Lutetia, so it's time to take advantage of that. Mine out what you can and bring it back to Earth for examination. There's much money to be made if this goes well.
+  descriptionEnd: "Asteroid Sample
+Samples received and examined, economically viable products confirmed. This will allow us to be more independent of Earth. Our company grows in power!"
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_raremetal
+      howMuch: 5
+      fromID: 21 LUTETIA
+      toID: EARTH
+      possessionType: Resource
+      resourceTypeType: resorces
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 150000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_asteroid_mining
+
+# Trading on Earth
+contract_asteroid_trading:
+  title: Trading on Earth
+  description: Extra resources extracted in space can be sold back on Earth to the World Governments for profit. Rarer and more expensive resources such as Rare Metals, Fissiles, or Helium-3 are particularly good choices, as well as manufactured goods such as Electronics.
+  descriptionEnd: That's how you make a profit!
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MarketPlaceOffers_Objective1
+      objectiveType: MarketPlaceOffers
+      checkCompletedOnStart: false
+      marketsOffers:
+        sellOffers: true
+        resource: id_resource_raremetal
+        howMuch: 100
+        location: EARTH
+  rewards:
+    - rewardType: Money
+      amount: 15000
+
+# Orbital Laboratory
+contract_earth_space_station:
+  title: Orbital Laboratory
+  description: Observation alone cannot answer every question. Some research requires experiments to be conducted directly under the conditions being studied, allowing scientists to make discoveries and develop new technologies. To make this possible in orbit, we can establish an orbital laboratory station, starting with a station core and expanding it with the modules needed to support its operations.
+  descriptionEnd: "Orbital Laboratory
+The orbital station is now operational. With its research facilities, living space, and power systems in place, scientists can conduct experiments directly in orbit, accelerating research and shortening the path from discovery to practical technology. Continuous operations will allow more experiments to be conducted in parallel, increasing the overall pace of research."
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_station_modular
+      howMuch: 1
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_lifesup_12
+      howMuch: 1
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: station_modular_construction
+      howMuch: 1
+      fromID: EARTH [ORBIT]
+      toID: EARTH [ORBIT]
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: module_station_lab
+      howMuch: 1
+      fromID: -999
+      toID: -1
+      possessionType: ResourceModule
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_modular_construction
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: module_station_power_solar
+      howMuch: 1
+      fromID: -999
+      toID: -1
+      possessionType: ResourceModule
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_modular_construction
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: module_station_habitat
+      howMuch: 1
+      fromID: -999
+      toID: -1
+      possessionType: ResourceModule
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_modular_construction
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_human
+      howMuch: 20
+      fromID: -999
+      toID: -1
+      possessionType: Resource
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_modular_construction
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5500000
+
+# Exoplanet Search
+contract_general_exoplanetsearch:
+  title: Exoplanet Search
+  description: If we are to leave the Solar System, we'd better have a place worth visiting. We need to find a potentially habitable exoplanet to send an interstellar mission to. 
+  descriptionEnd: We found a great candidate system - now we can begin planning our journey.
+  isLocked: true
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateTimeStringStartEnable: true
+  dateTimeStringStart: 2080-01-01 00:00:00
+  dateTimeStringStartLimit: 2120-01-01 00:00:00
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ExplorationInterstellar_Objective1
+      objectiveType: ExplorationInterstellar
+      howMuch: -1
+      fromID: -999
+      toID: -999
+      explorationInterstellar:
+        condition: AllInList
+        number: 1
+        objects:
+          - checkMass: true
+            minMass: 3
+            maxMass: 20
+            checkHabitableZone: true
+      tutorialOnForThisObjective: false
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_category_interstellar
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 1000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_general_interstellar1
+
+# Fleet Expansion
+contract_general_fleet:
+  title: Fleet Expansion
+  description: As our population and influence grow, we're reaching the limit of our space flight capabilities. We need to expand our spacecraft fleet to handle more missions in the near future.
+  descriptionEnd: "Fleet Expansion
+Our space armada has become one of the greatest in the system. New spacecraft will allow us to broaden our influence and improve our space logistics. "
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      howMuch: 10
+      fromID: -1
+      toID: -1
+      possessionType: Ship
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 200000
+
+# Fusion Power
+contract_general_fusionpower:
+  title: Fusion Power
+  description: For many decades, nuclear fusion seemed to be just out of our grasp, promising unlimited energy if we just managed to push through. Finally, we're on the verge of this breakthrough that will power our future.
+  descriptionEnd: "Fusion Power
+We've done it! Years of research have finally paid off, and it did so greatly! The power of a star is in our hands!"
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_electromag_2
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_power_fusion
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 40000000
+
+# First Step to Interstellar
+contract_general_interstellar1:
+  title: First Step to Interstellar
+  description: We are ready to begin humanity's grandest project yet - to travel beyond our solar system and reach new stars. To do so, we'll need to engineer something greater than ever before - a spacecraft capable of travelling interstellar spaces with all the technology and resources necessary to serve as a home base in a new place.
+  descriptionEnd: "First Step to Interstellar
+With the foundation of our project laid, we can begin construction."
+  isLocked: true
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_space_interstellarconstruction
+      howMuch: 1
+      fromID: -1
+      toID: -1
+  rewards:
+    - rewardType: Money
+      amount: 1000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_general_interstellar2
+
+# Beyond the Solar System
+contract_general_interstellar2:
+  title: Beyond the Solar System
+  description: The great work has begun. It will take riches of many planets and asteroids to construct, but it shall be one of humanity's greatest achievements.
+  descriptionEnd: "Beyond the Solar System
+Sic itur ad astra.
+The interstellar vessel is complete. The final frontier awaits. Now we need only the courage to go there."
+  isLocked: true
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  startID: EARTH [ORBIT]
+  rewardsStartContract:
+    - rewardType: GiveObject
+      facility: build_space_interstellarconstruction
+      buildImmediately: true
+  objectives:
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_structure
+      howMuch: 1
+      fromID: -1
+      toID: -1
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_drive
+      howMuch: 3
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_habitat
+      howMuch: 8
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_HouseTheCrew
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 2000
+      fromID: -1
+      toID: -999
+      possessionType: Facility
+      resourceTypeType: crew
+      afterBuildAutomaticFillToID: true
+      afterBuildAutomaticFillToIDObjectNameHighLightShort: true
+      toIDUseTranslateBeforeBuild: id_Spacecraft_InterstellarShip
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      howMuch: -1
+      fromID: -999
+      toID: -999
+      afterFindAutomaticFillFromID: true
+      afterBuildAutomaticFillToID: true
+      fromIDUseTranslateBeforeBuild: id_Spacecraft_InterstellarShip
+      toIDUseTranslateBeforeBuild: Game.UI.Windows.ExplorationWindow.Toggle.ExoplanetDiscovery
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 820000000
+
+# Space Laboratories
+contract_general_labs:
+  title: Space Laboratories
+  description: To expand our knowledge we need to expand our research. Laboratory complexes on other planets will allow us to study every little detail of these new worlds, and let us understand them better.
+  descriptionEnd: "Space Laboratories
+With ongoing research and the constant stream of new data, we are going to progress our technologies and science faster than ever. We are ahead of the curve."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: build_lab
+      howMuch: 5
+      fromID: -1
+      toID: -1
+      possessionType: Facility
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 28000000
+
+# Improve Launch Methods
+contract_general_magrail:
+  title: Improve Launch Methods
+  description: The growing needs of transportation call for better means of it. To further accelerate our spaceflights, a new system of reusable launch infrastructure is needed.
+  descriptionEnd: "Improve Launch Methods
+With the new Magnetic Launch Rails constructed, we'll be able to send cargo into space even cheaper!"
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_launch_magrail
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_launch_magrails
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 200000
+
+# Space Elevator
+contract_general_spaceelevator:
+  title: Space Elevator
+  description: To support the growing flow of materials between Earth and space, we require a transportation system capable of moving large quantities of cargo at minimal cost. By constructing a Space Elevator, we can establish a continuous link to orbit that complements existing launch systems while greatly reducing the expense of transporting bulk cargo into space.
+  descriptionEnd: "Space Elevator
+The Space Elevator has been successfully constructed. Powered by electricity, it has overcome the limitations of rocket propellant and now carries us to orbit, making the journey routine and accelerating the expansion of our presence in space."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_launch_massengine
+      howMuch: 5
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      deliverEntireAsteroid: true
+      needPreviousObjective: true
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_launch_elevator
+      fromID: EARTH
+      toID: EARTH
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 150000
+
+# Mars Colony
+contract_mars_colony1:
+  title: Mars Colony
+  description: The time has come to colonize Mars. Now that we can provide our population and industry with everything they need, we should begin construction of habitats to house newcomers and their future families.
+  descriptionEnd: "Mars Colony
+Finally, Mars is not just an outpost, but a proper settlement. We've managed to accommodate the entire community, living far from Earth. We have made an impossible dream come true."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_habitat
+      howMuch: 1
+      fromID: MARS
+      toID: MARS
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 100
+      fromID: -1
+      toID: MARS
+      possessionType: Facility
+      resourceTypeType: crew
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5500000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_colony2
+    - rewardType: Unlock
+      unlock:
+        action: UnlockStartGameEpoch
+
+# Mars City
+contract_mars_colony2:
+  title: Mars City
+  description: With an early colony established, we need to look towards expanding our base of operations on Mars. Being self-sufficient is not enough for us - the colony needs to prosper, bring profits, and serve as an example for the future establishments.
+  descriptionEnd: "Mars City
+After so many years, we have fulfilled a great dream: Mars has become a home to thousands. And we're here to stay, and grow even further, until we take over the entire planet."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_human
+      howMuch: 1000
+      fromID: MARS
+      toID: -1
+      possessionType: Resource
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 33000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_magnet
+
+# Life on Mars
+contract_mars_farming1:
+  title: Life on Mars
+  description: If we wish to inhabit Mars, we need to make sure that the basic necessities - such as food and air - are taken care of. If our people are able to live there, our chances to colonize it will increase drastically.
+  descriptionEnd: "Life on Mars
+Exploiting Mars's trapped water is the first step to our self-sufficient existence on the Red Planet. Now that we don't need to struggle to survive there, we will thrive."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_icemine
+      howMuch: 1
+      fromID: MARS
+      toID: MARS
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_farm
+      howMuch: 1
+      fromID: MARS
+      toID: MARS
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_colony1
+
+# Martian Industry
+contract_mars_industry1:
+  title: Martian Industry
+  description: Production and processing of metal alloys will allow us to build more on site. Mars' system's diverse resources are perfect to establish a production base which will satisfy our resource needs.
+  descriptionEnd: "Martian Industry
+The factory is operational. With a steady supply of carbon from Phobos we'll be able to produce as much as we need. The true Mars expansion starts now."
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_alloysmelting
+      howMuch: 1
+      fromID: MARS
+      toID: MARS
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_trading
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_space_station
+
+# Humans on Mars
+contract_mars_marslanding:
+  title: Humans on Mars
+  description: With the preparations made, it's time to send our brave astronauts to be the first to set foot on Mars. Nobody has ever done it before. If we can do it, the entire space sector will change forever.
+  descriptionEnd: "Humans on Mars
+We have done it! We are the first people in history to establish a base on Mars. This day will impact the entire future of humankind. "
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: true
+  isFinalContractToEndDemo: true
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: ShowTrivialWindow
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_steel
+      howMuch: 100
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_chips
+      howMuch: 25
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_raremetal
+      howMuch: 40
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_uran
+      howMuch: 10
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      tutorialOnForThisObjective: false
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_sc_hermes
+      tutorialOnForThisObjective: false
+    - id: id_Contract_CreatNewSpacecraft_Objective2
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_electric_small
+      howMuch: 1
+      fromID: EARTH [ORBIT]
+      toID: EARTH [ORBIT]
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_crew_compartment
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      checkCrewInCargoMustBe: true
+      needPreviousObjective: true
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 6000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_farming1
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_industry1
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_outer_jupiter1
+        parameter2: contract_mars_marslanding
+        unlockContractAdvance: PartOfContract
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_asteroid_first
+        parameter2: contract_mars_marslanding
+        unlockContractAdvance: PartOfContract
+    - rewardType: Unlock
+      unlock:
+        action: UnlockStartGameEpoch
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_phoboscarbon
+
+# Preparation for Human Landing on Mars 
+contract_mars_marsprep:
+  title: Preparation for Human Landing on Mars 
+  description: Sending probes to Mars is easy, but sending humans is a lot harder when you know they have to survive and return. We cannot fail this mission. Let's start with establishing facilities necessary for the safe expedition of our crew to the Red Planet.
+  descriptionEnd: "Preparation for Human Landing on Mars
+Resource acquisition complete. Now it's time to prepare a surface base for our astronauts."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_basemining
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      helpObjectiveID: id_Contract_Deliver_Objective1help
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_construction
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_metal
+      howMuch: 90
+      fromID: MARS
+      toID: MARS
+      possessionType: Resource
+      needPreviousObjective: true
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_raremetal
+      howMuch: 10
+      fromID: MARS
+      toID: MARS
+      possessionType: Resource
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_supply
+      howMuch: 20
+      fromID: MARS
+      toID: MARS
+      possessionType: Resource
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_glass
+      howMuch: 50
+      fromID: MARS
+      toID: MARS
+      possessionType: Resource
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_steel
+      howMuch: 10
+      fromID: MARS
+      toID: MARS
+      possessionType: Resource
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5500000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_marspreptwo
+
+# Preparation for Human Landing on Mars 2
+contract_mars_marspreptwo:
+  title: Preparation for Human Landing on Mars 2
+  description: With the resources ready, we need to construct a self-sufficient shelter and means of energy production for our crew on Mars, so that they can survive and begin operations there. 
+  descriptionEnd: "Preparation for Human Landing on Mars 2
+Preparations are complete, power generators are up and running, the shelter is fully operational. All that remains is getting our astronauts there. "
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: ShowTrivialWindow
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_fuel
+      fromID: MARS
+      toID: MARS
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_outpost
+      fromID: MARS
+      toID: MARS
+      tutorialOnForThisObjective: false
+    - id: id_Contract_MakeEnergyProduction_Objective1
+      objectiveType: MakeEnergyProduction
+      howMuch: 1
+      fromID: MARS
+      toID: -1
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5500000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_marslanding
+        parameter2: contract_mars_marspreptwo
+        unlockContractAdvance: PartOfContract
+
+# Phobos Carbon
+contract_mars_phoboscarbon:
+  title: Phobos Carbon
+  description: To supply our Mars colonies, we want a steady stream of easily accessible organics. By constructing an unmanned mining outpost on Phobos and setting up a cyclical mission between it and the red planet, we can keep ourselves supplied.
+  descriptionEnd: "Phobos Carbon
+Excellent work! This carbon will keep our farms running."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: true
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_basemining
+      howMuch: 1
+      fromID: -1
+      toID: PHOBOS
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ScheduleCyclicalFly_Objective1
+      objectiveType: ScheduleCyclicalMission
+      fromID: PHOBOS
+      toID: MARS
+      scheduleCyclicalFlyData:
+  rewards:
+    - rewardType: Money
+      amount: 1500000
+
+# Orbital Industry
+contract_mars_space_station:
+  title: Orbital Industry
+  description: An orbital industrial complex around Mars should be the next step in expanding our production capabilities. Start with a station core, then attach the industrial and other essential modules needed for daily operations. Production can then begin, with further expansion increasing capacity and supporting specialized manufacturing beyond the Martian surface.
+  descriptionEnd: "Orbital Industry
+The orbital industrial complex around Mars is now operational. Its industrial modules can begin producing goods in orbit, while its controlled environment makes specialized manufacturing more practical and economical than on the Martian surface, adding a new dimension to Mars's industrial capabilities."
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_station_rotating
+      howMuch: 1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_mat_chips1
+      howMuch: 1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: station_rotary_construction
+      howMuch: 1
+      fromID: MARS [ORBIT]
+      toID: MARS [ORBIT]
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_rotary_construction
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: module_station_electronic_prod
+      howMuch: 1
+      fromID: -999
+      toID: -1
+      possessionType: ResourceModule
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_rotary_construction
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: module_station_power_solar
+      howMuch: 1
+      fromID: -999
+      toID: -1
+      possessionType: ResourceModule
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_rotary_construction
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: module_station_habitat
+      howMuch: 1
+      fromID: -999
+      toID: -1
+      possessionType: ResourceModule
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_rotary_construction
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_human
+      howMuch: 20
+      fromID: -999
+      toID: -1
+      possessionType: Resource
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_rotary_construction
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 17000000
+
+# Mars Early Atmosphere
+contract_mars_terraform_atmo1:
+  title: Mars Early Atmosphere
+  description: The first phase of terraforming only requires a thin atmosphere to be established - uncomfortable and unbreathable, but survivable with just an oxygen mask. It will create a warming effect and let some of the most resilient flora and microbes spread.
+  descriptionEnd: We can say goodbye to the pressure suits and start spreading more life on Mars! 
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      fromID: MARS
+      toID: MARS
+      changeHabitability:
+        parameter: Pressure
+        comparingType: Enlarge
+        toCompare: 0.1
+        location: MARS
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      fromID: MARS
+      toID: MARS
+      changeHabitability:
+        parameter: Composition
+        comparingType: Between
+        toCompare: 0
+        min: 0.19
+        max: 0.3
+        location: MARS
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 800000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_atmo2
+        parameter2: contract_mars_terraform_atmo1
+        unlockContractAdvance: PartOfContract
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_water
+        parameter2: contract_mars_terraform_atmo1
+        unlockContractAdvance: PartOfContract
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_waterdrop
+        parameter2: contract_mars_terraform_atmo1
+        unlockContractAdvance: PartOfContract
+
+# Mars Atmosphere
+contract_mars_terraform_atmo2:
+  title: Mars Atmosphere
+  description: Establishing a full and breathable atmosphere is no easy task, but an essential one if we want to live on Mars comfortably. We should commence the second phase of atmosphere adjustment.
+  descriptionEnd: With an atmosphere like this, our progress on the Red Planet will speed up considerably! Great job!
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      fromID: MARS
+      toID: MARS
+      changeHabitability:
+        parameter: Pressure
+        comparingType: Between
+        toCompare: 0
+        min: 0.55
+        max: 1.25
+        location: MARS
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      fromID: MARS
+      toID: MARS
+      changeHabitability:
+        parameter: Composition
+        comparingType: Between
+        toCompare: 0
+        min: 0.19
+        max: 0.3
+        location: MARS
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 1000000000
+
+# Artificial Magnetosphere for Mars
+contract_mars_terraform_magnet:
+  title: Artificial Magnetosphere for Mars
+  description: For Mars to maintain an atmosphere and our colonists to be safe from radiation, we need to create an artificial magnetosphere. A network of field generators around the planet will let us settle and terraform more easily. They will be costly to build and maintain, but necessary for further steps.
+  descriptionEnd: With Mars shielded from radiation, it is time to continue our efforts. Let's get on with terraformation!
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: ShowTrivialWindow
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_terraform_magnet
+      fromID: MARS
+      toID: MARS
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      fromID: MARS
+      toID: MARS
+      changeHabitability:
+        parameter: Radiation
+        comparingType: Lesser
+        toCompare: 6
+        location: MARS
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 800000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_atmo1
+        parameter2: contract_mars_terraform_magnet
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_temp
+    - rewardType: Unlock
+      unlock:
+        action: UnlockStartGameEpoch
+
+# Warming Mars
+contract_mars_terraform_temp:
+  title: Warming Mars
+  description: Raising temperature will make the surface more habitable, and allow lower temperature gases and liquids to exist on the planet. As we warm Mars, dry ice and trapped water will be released from frozen rocks.
+  descriptionEnd: With the temperature regulated, our capabilities on Mars have expanded greatly!
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      fromID: MARS
+      toID: MARS
+      changeHabitability:
+        parameter: Temperature
+        comparingType: Between
+        toCompare: 0
+        min: 0
+        max: 20
+        location: MARS
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 1500000000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_atmo2
+        parameter2: contract_mars_terraform_temp
+        unlockContractAdvance: PartOfContract
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_water
+        parameter2: contract_mars_terraform_temp
+        unlockContractAdvance: PartOfContract
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_terraform_waterdrop
+        parameter2: contract_mars_terraform_temp
+        unlockContractAdvance: PartOfContract
+
+# Blue Mars
+contract_mars_terraform_water:
+  title: Blue Mars
+  description: Bringing enough water to Mars will make it possible for many organisms to thrive and help regulate temperature. Doing it will require a large-scale operation, but with enough persistence and good planning, we'll wipe the name Red Planet from books.
+  descriptionEnd: A few centuries ago, nobody believed something like this would even be possible. We've made history, once again.
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ChangeDeposit_Objective1
+      objectiveType: ChangeDeposit
+      fromID: MARS
+      toID: MARS
+      checkCompletedOnStart: false
+      changeDeposit:
+        resource: id_resource_water
+        howMuch: 100000
+        location: MARS
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      fromID: MARS
+      toID: MARS
+      changeHabitability:
+        parameter: Water
+        comparingType: Enlarge
+        toCompare: 0.028
+        location: MARS
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 100000000
+
+# Deliver water to Mars
+contract_mars_terraform_waterdrop:
+  title: Deliver water to Mars
+  description: A great way to deliver water to Mars is by pushing water-rich asteroids onto its surface. If we research engines to do it, and find an appropriate asteroid, we'll be able to bring water to the Red Planet.
+  descriptionEnd: Excellent! The large deposits of ice will help with making the Red Planet more blue.
+  isLocked: true
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_launch_massengine
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: resorces
+      deliverEntireAsteroid: true
+      advance: true
+      asteroidPullingNeedDeposit:
+        - id_resource_water
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 100000000
+
+# Trading on Other Planets
+contract_mars_trading:
+  title: Trading on Other Planets
+  description: If we have an excess of a resource, or perhaps are in need of some more, we can always trade with other space corporations. Make a marketplace offer with our excess alloys on Mars.
+  descriptionEnd: Offer made, now just wait for eager buyers!
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MarketPlaceOffers_Objective1
+      objectiveType: MarketPlaceOffers
+      checkCompletedOnStart: false
+      marketsOffers:
+        sellOffers: true
+        resource: id_resource_steel
+        howMuch: 200
+        location: MARS
+  rewards:
+    - rewardType: Money
+      amount: 15000
+
+# Lunar Depot
+contract_moon_lunardepot:
+  title: Lunar Depot
+  description: It was once said that once you're in orbit you're halfway to anywhere - this makes it the ideal place for a refueling point for any flights to the outer system. To keep the depot stocked, make sure to set up cyclic flights from a fuel production base on places such as Luna or Deimos. It's cheaper than launching from Earth's surface!
+  descriptionEnd: "Lunar Depot
+With fuel production on the moon, we have an outpost for further excursions into deep space. Now we can really show what we're capable of."
+  isLocked: true
+  hideUI: false
+  skipForAI: true
+  isFinalContract: true
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_fuel
+      howMuch: 1
+      fromID: -1
+      toID: PHOBOS
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_basemining
+      howMuch: 1
+      fromID: -1
+      toID: PHOBOS
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ScheduleCyclicalFly_Objective1
+      objectiveType: ScheduleCyclicalMission
+      fromID: LUNA
+      toID: EARTH [ORBIT]
+      scheduleCyclicalFlyData:
+  rewards:
+    - rewardType: Money
+      amount: 1500000
+
+# Moonbase Alpha
+contract_moon_moonbase:
+  title: Moonbase Alpha
+  description: A moonbase will greatly benefit our exploration efforts as a forward base outside of Earth's deep gravity well. Establishing such a foothold on our satellite will help us to reach further in space.
+  descriptionEnd: "Moonbase Alpha
+A permanent base of operations allows us to expand our operations on Luna and beyond. With such an operation center, we can develop space flight infrastructure. Great job!"
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: ShowTrivialWindow
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: module_construction
+      howMuch: 1
+      fromID: LUNA
+      toID: LUNA
+      possessionType: ResourceModule
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_outpost
+      howMuch: 1
+      fromID: LUNA
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_fuel
+      howMuch: 1
+      fromID: LUNA
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_icemine
+      howMuch: 1
+      fromID: LUNA
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_power_solar
+      howMuch: 1
+      fromID: LUNA
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 10
+      fromID: -1
+      toID: LUNA
+      possessionType: Resource
+      resourceTypeType: crew
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 6500000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_asteroid_first
+        parameter2: contract_moon_moonbase
+        unlockContractAdvance: PartOfContract
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_tutorial_lab
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_earth_space_station
+
+# Callisto Landing
+contract_outer_callistolanding:
+  title: Callisto Landing
+  description: Now that we have gone that far, we are able to reach beyond. Callisto is an obvious choice for the first human landing in the Outer System. Let's go there, and make history.
+  descriptionEnd: "Callisto Landing
+This is the day to remember for the entire humankind. We reached farther than anybody has ever before. The door to the Outer System is wide open for us."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_human
+      howMuch: 5
+      fromID: -1
+      toID: CALLISTO
+      possessionType: Resource
+      resourceTypeType: crew
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5500000
+
+# Beyond Mars
+contract_outer_jupiter1:
+  title: Beyond Mars
+  description: Now that Mars is conquered, it is time for us to reach even further, towards the gas giants. The technology to make use of them is within our reach, so let's strike the iron while it's still hot.
+  descriptionEnd: "Beyond Mars
+The outer system is rich in water and valuable gases. It will fuel our flights, hydrate parched planets, and, perhaps, even power our future. With deposits so big, nothing can stop us from expanding."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: -1
+      toID: -1
+      advance: true
+      moonOfID: JUPITER
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5500000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_outer_saturn1
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_outer_callistolanding
+
+# Reaching Saturn
+contract_outer_saturn1:
+  title: Reaching Saturn
+  description: After reaching Jupiter, Saturn is the obvious next step in our expansion outwards. We will need to plan carefully in order to minimize costs and mitigate risks - it will be no easy task to reach it and start our operations there. 
+  descriptionEnd: "Reaching Saturn
+The ringed giant is a sight to behold, even more so up close. Now that we are here, we should start setting up our operations on its moons immediately.."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: -1
+      toID: -1
+      advance: true
+      moonOfID: SATURN
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5500000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_outer_titanlanding
+
+# Titan Landing
+contract_outer_titanlanding:
+  title: Titan Landing
+  description: Titan is a great place to start, as the only moon of Saturn with an atmosphere, and the only body in the Solar System besides Earth known to have surface bodies of liquid. It is of great interest to astrobiology, and an excellent place for a pioneering mission.
+  descriptionEnd: "Titan Landing
+We have reached Titan successfully. Coming here means faster development of our operations, and, more importantly, new discoveries. What knowledge and resources does this place offer?"
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_human
+      howMuch: 5
+      fromID: -1
+      toID: TITAN
+      possessionType: Resource
+      resourceTypeType: crew
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 5500000
+
+# Propellant Depot
+contract_spacestation_fuel1:
+  title: Propellant Depot
+  description: It was once said that once you're in orbit you're halfway to anywhere - this makes it the ideal place for a refueling point for any flights to the outer system. To keep the depot stocked, make sure to set up cyclic flights from a fuel production base on places such as Luna or Deimos. It's cheaper than launching from Earth's surface!
+  descriptionEnd: "Propellant Depot
+With fuel production set up, we have an outpost for further excursions into deep space. Now we can really show what we're capable of."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_fuel
+      howMuch: 100
+      fromID: -1
+      toID: EARTH
+      possessionType: Resource
+      resourceTypeType: resorces
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 200000
+
+# First Orbit
+contract_tutorial_firstorbit:
+  title: First Orbit
+  description: We're ready for our big launch! To start off, we need to put a brand new space telescope in Low Earth Orbit. It will let us look above and beyond, and scout out suitable locations for future missions. 
+  descriptionEnd: "First Orbit
+Telescope successfully delivered, systems check passed. We're ready to observe objects in outer worlds."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  textToShowNextContractKeyId: Tutorial.firstorbit.textToShowNextContract
+  rewardsStartContract:
+    - rewardType: GiveObject
+      launchVehicle: id_Rocket_RocketType1
+      buildImmediately: true
+    - rewardType: GiveObject
+      facility: module_hubel_telescope
+      buildImmediately: true
+    - rewardType: ShowTrivialWindow
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_hubel_telescope
+      howMuch: 1
+      fromID: EARTH
+      toID: EARTH [ORBIT]
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      checkCompletedOnStart: false
+    - id: id_Contract_ExplorationObject_Objective
+      objectiveType: ExplorationObject
+      fromID: -1
+      toID: LUNA
+      checkCompletedOnStart: false
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_tutorial_moonorbit
+    - rewardType: Money
+      amount: 15000
+
+# Research Laboratories
+contract_tutorial_lab:
+  title: Research Laboratories
+  description: To improve our research efforts we need to learn more about the worlds we're trying to explore. You can do this by constructing and crewing laboratories on other objects. You can only build 1 on each object, and they provide diminishing returns the more you build them, but each one improves the speed of our research significantly.
+  descriptionEnd: Excellent! This will reduce research time considerably!
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_lab
+      howMuch: 1
+      fromID: LUNA
+      toID: -1
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 3000000
+
+# Explore Mars
+contract_tutorial_marsorbit:
+  title: Explore Mars
+  description: Luna was only the beginning - our next stop will be a greater one. The Red Planet awaits somebody brave enough to reach it. Let's examine it up close and see what we might find there.
+  descriptionEnd: "Explore Mars
+Aerobrake maneuver and soft landing went off without a hitch. We're receiving our first photos of the red planet - great job everyone. We'll have a wealth of information on what resources we can find on the planet."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  textToShowNextContractKeyId: Tutorial.moonlanding2.textToShowNextContract
+  objectives:
+    - id: id_Contract_CreatNewVehicle_Objective2
+      objectiveType: CreateVehicle
+      productItem: id_Rocket_RocketType3
+      fromID: EARTH
+      toID: EARTH
+      tutorialOnForThisObjective: false
+    - id: id_Contract_CreatNewSpacecraft_Objective2
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_small
+      fromID: EARTH
+      toID: EARTH
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: module_space_probe
+      howMuch: 1
+      fromID: EARTH
+      toID: EARTH
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_space_probe
+      howMuch: 1
+      fromID: EARTH
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: modules
+      needPreviousObjective: true
+      checkCompletedOnStart: false
+      objectiveToMarkDoneAfterThisObjective: id_Contract_BuildFacility_Objective2
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_marsprep
+    - rewardType: Money
+      amount: 1200000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_tutorial_slingshot
+
+# Lunar Landing
+contract_tutorial_moonlanding:
+  title: Lunar Landing
+  description: It's time for a grand return to the moon. Let's construct our most powerful launch vehicle, and a spacecraft capable of bringing crew to the moon and back. We might not be the first humans there, but we will make sure to be the ones remembered.
+  descriptionEnd: "Lunar Landing
+The crew landed successfully with no issues. The news is already talking about this - we made history today. It's been decades since anybody achieved it."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: GiveObject
+      facility: module_crew_compartment
+      buildImmediately: true
+  objectives:
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_sc_helios
+    - id: id_Contract_CreatNewSpacecraft_Objective2
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_large
+      fromID: EARTH
+      toID: -1
+      showShortTutorial: true
+      idTextShortTutorial: contract_tutorial_moonlanding_Objective1ShortTutorial
+    - id: id_Contract_CreatNewVehicle_Objective2
+      objectiveType: CreateVehicle
+      productItem: id_Rocket_RocketType4
+      fromID: EARTH
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_crew_compartment
+      howMuch: 1
+      fromID: EARTH
+      toID: LUNA
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      checkCrewInCargoMustBe: true
+      needPreviousObjective: true
+      checkCompletedOnStart: false
+      showWarningInPlanMission: true
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_crew_compartment
+      howMuch: 1
+      fromID: LUNA
+      toID: EARTH
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      checkCrewInCargoMustBe: true
+      needPreviousObjective: true
+      checkCompletedOnStart: false
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_tutorial_marsorbit
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_tutorial_spacedock
+    - rewardType: Money
+      amount: 2200000
+
+# Explore Luna
+contract_tutorial_moonorbit:
+  title: Explore Luna
+  description: We cannot hope to reach farther, if we don't start in our closest neighbourhood. It's time to send a probe to Earth's companion. Prepare a spacecraft to deliver a probe to Luna, it will allow us to search for resource deposits on the lunar surface.
+  descriptionEnd: "Explore Luna
+Touchdown confirmed, data feed established. We'll be getting survey data on resource deposits soon, finding out what riches lay on the moon."
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: GiveObject
+      launchVehicle: id_Rocket_RocketType1
+  objectives:
+    - id: id_Contract_CreatNewSpacecraft_Objective2
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_small
+      fromID: EARTH
+      toID: -1
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: module_space_probe
+      fromID: EARTH
+      toID: EARTH
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_space_probe
+      howMuch: 1
+      fromID: EARTH
+      toID: LUNA
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      needPreviousObjective: true
+      objectiveToMarkDoneAfterThisObjective: id_Contract_BuildFacility_Objective2
+      showDragAndDrop: true
+  rewards:
+    - rewardType: Money
+      amount: 150000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_tutorial_moonlanding
+
+# Gravitational Slingshot
+contract_tutorial_slingshot:
+  title: Gravitational Slingshot
+  description: With clever use of planetary alignments we can slingshot our spacecraft farther than they would reach otherwise. We recommend using a Selene spacecraft loaded with a probe to fly through Jupiter orbit and reach Pluto - a mission that wouldn't be possible without gravitational assist.
+  descriptionEnd: "Gravitational Slingshot
+Excellent flight planning, Director!"
+  isLocked: true
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: -1
+      toID: JUPITER [ORBIT]
+      helpSpaceCraftType: spacecraft_chem_mid2
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ScheduleFlyGravityAssist_Objective1
+      objectiveType: ScheduleFlyGravityAssist
+      fromID: -1
+      toID: PLUTO
+      checkCompletedOnStart: false
+  rewards:
+    - rewardType: Money
+      amount: 200000
+
+# Space Dock
+contract_tutorial_spacedock:
+  title: Space Dock
+  description: Having to launch our spacecraft from the surface severely limits our designs. A way to construct them directly in orbit will allow for spacecraft specialized exclusively for navigating from orbit to orbit.
+  descriptionEnd: "Space Dock
+The dock is ready. This is where we will build our future interplanetary vehicles and set off to further space excursions. "
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_space_construction_cargo
+      howMuch: 1
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_steel
+      howMuch: 150
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_plastic
+      howMuch: 50
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_chips
+      howMuch: 25
+      fromID: -1
+      toID: EARTH [ORBIT]
+      possessionType: Resource
+      resourceTypeType: resorces
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_space_drydock
+      howMuch: 1
+      fromID: EARTH [ORBIT]
+      toID: EARTH [ORBIT]
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 1600000
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_moon_moonbase
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_mars_marslanding
+        parameter2: contract_tutorial_spacedock
+        unlockContractAdvance: PartOfContract
+    - rewardType: Unlock
+      unlock:
+        action: UnlockUIElement
+
+# contract_asteroid_drop_test_Title
+contract_asteroid_drop_test:
+  title: contract_asteroid_drop_test_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: resorces
+      deliverEntireAsteroid: true
+      advance: true
+      objectSubTypeID: ObjectSubType.AsteroidCarbon
+      checkCompletedOnStart: false
+
+# contract_asteroidWater_drop_test_Title
+contract_asteroidWater_drop_test:
+  title: contract_asteroidWater_drop_test_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: resorces
+      deliverEntireAsteroid: true
+      advance: true
+      asteroidPullingNeedDeposit:
+        - id_resource_water
+      checkCompletedOnStart: false
+
+# contract_depositChange_test_Title
+contract_depositChange_test:
+  title: contract_depositChange_test_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ChangeDeposit_Objective1
+      objectiveType: ChangeDeposit
+      changeDeposit:
+        resource: id_resource_metal
+        howMuch: 10000
+        location: EARTH
+
+# contract_tutorial_ExplorationObject_Title
+contract_tutorial_ExplorationObject:
+  title: contract_tutorial_ExplorationObject_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ExplorationObject_Objective
+      objectiveType: ExplorationObject
+      fromID: -1
+      toID: LUNA
+      checkCompletedOnStart: false
+
+# contract_tutorial_moonlandingMultiModuleDeliverTest_Title
+contract_tutorial_moonlandingMultiModuleDeliverTest:
+  title: contract_tutorial_moonlandingMultiModuleDeliverTest_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: GiveObject
+      facility: module_crew_compartment
+      buildImmediately: true
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      fromList: true
+      productItems:
+        - module_crew_compartment
+        - module_construction
+        - module_basemining
+      howMuch: 1
+      fromID: EARTH
+      toID: LUNA
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      needPreviousObjective: true
+      checkCompletedOnStart: false
+      showWarningInPlanMission: true
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: contract_tutorial_marsorbit
+    - rewardType: Money
+      amount: 200000
+
+# test_ManyContracts1_Title
+test_ManyContracts1:
+  title: test_ManyContracts1_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_large
+      fromID: EARTH
+      toID: -1
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_mid2
+      fromID: EARTH
+      toID: -1
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_small
+      fromID: EARTH
+      toID: -1
+
+# test_ManyContracts2_Title
+test_ManyContracts2:
+  title: test_ManyContracts2_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_small
+      fromID: EARTH
+      toID: -1
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_mid2
+      fromID: EARTH
+      toID: -1
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_large
+      fromID: EARTH
+      toID: -1
+
+# test_ManyObjectiveManyContracts_Title
+test_ManyObjectiveManyContracts:
+  title: test_ManyObjectiveManyContracts_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: EARTH
+      toID: EARTH [ORBIT]
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_ManyContracts1
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_ManyContracts2
+
+# test2_objective_Schedule_fly_Title
+test2_objective_Schedule_fly:
+  title: test2_objective_Schedule_fly_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      productItem: spacecraft_chem_small
+      productItem2: id_Rocket_RocketType1
+      fromID: EARTH
+      toID: EARTH [ORBIT]
+
+# test_contract_general_interstellar 1_Title
+test_contract_general_interstellar 1:
+  title: test_contract_general_interstellar 1_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_space_interstellarconstruction
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_structure
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_drive
+      howMuch: 3
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_habitat
+      howMuch: 8
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_HouseTheCrew
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 100
+      fromID: -1
+      toID: -999
+      possessionType: Facility
+      resourceTypeType: crew
+      afterBuildAutomaticFillToID: true
+      toIDUseTranslateBeforeBuild: id_Spacecraft_InterstellarShip
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      howMuch: -1
+      fromID: -999
+      toID: -1
+      advance: true
+      advanceObjectTypes: SolarSystem
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: id_Spacecraft_InterstellarShip
+      toIDUseTranslateBeforeBuild: Game.UI.Windows.ExplorationWindow.Toggle.ExoplanetDiscovery
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 20000000
+
+# test_contract_general_interstellar 2_Title
+test_contract_general_interstellar 2:
+  title: test_contract_general_interstellar 2_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_space_interstellarconstruction
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_structure
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_drive
+      howMuch: 3
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_habitat
+      howMuch: 8
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: build_interstellar_HouseTheCrew
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      tutorialOnForThisObjective: false
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 100
+      fromID: -1
+      toID: -999
+      possessionType: Facility
+      resourceTypeType: crew
+      afterBuildAutomaticFillToID: true
+      toIDUseTranslateBeforeBuild: id_Spacecraft_InterstellarShip
+      tutorialOnForThisObjective: false
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      howMuch: -1
+      fromID: -999
+      toID: 10000
+      advance: true
+      advanceObjectTypes: SolarSystem
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: id_Spacecraft_InterstellarShip
+      toIDUseTranslateBeforeBuild: Game.UI.Windows.ExplorationWindow.Toggle.ExoplanetDiscovery
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Money
+      amount: 20000000
+
+# test_creat_spaceCraft_Title
+test_creat_spaceCraft:
+  title: test_creat_spaceCraft_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_small
+      fromID: EARTH
+      toID: -1
+
+# test_creat_Vehicle_Title
+test_creat_Vehicle:
+  title: test_creat_Vehicle_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_CreatNewVehicle_Objective1
+      objectiveType: CreateVehicle
+      productItem: id_Rocket_RocketType2
+      fromID: -1
+      toID: -1
+
+# test_fromList_Title
+test_fromList:
+  title: test_fromList_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_test_fromList
+      objectiveType: FromListObjectiveNOtUseAnyMore
+      productItem: spacecraft_chem_small
+
+# test_make_research_Title
+test_make_research:
+  title: test_make_research_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MakeResearch_Objective1
+      objectiveType: MakeResearch
+      productItem: research_agriculture_1
+
+# test_objective_BuildFacility2_Title
+test_objective_BuildFacility2:
+  title: test_objective_BuildFacility2_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_hq
+      fromID: EARTH [ORBIT]
+      toID: -1
+
+# test_objective_BuildFacility_Title
+test_objective_BuildFacility:
+  title: test_objective_BuildFacility_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_hq
+      fromID: EARTH
+      toID: -1
+
+# test_objective_Deliver_Title
+test_objective_Deliver:
+  title: test_objective_Deliver_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_metal
+      howMuch: 100
+      fromID: -1
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: resorces
+
+# test_objective_DeliverAdvance1_Title
+test_objective_DeliverAdvance1:
+  title: test_objective_DeliverAdvance1_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_metal
+      howMuch: 100
+      fromID: -1
+      toID: -1
+      possessionType: Resource
+      resourceTypeType: resorces
+      advance: true
+      moonOfID: MARS
+
+# test_objective_DeliverAdvance2_Title
+test_objective_DeliverAdvance2:
+  title: test_objective_DeliverAdvance2_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_metal
+      howMuch: 100
+      fromID: -1
+      toID: -1
+      possessionType: Resource
+      resourceTypeType: resorces
+      advance: true
+      objectSubTypeID: ObjectSubType.AsteroidCarbon
+
+# test_objective_DeliverAdvance3_Title
+test_objective_DeliverAdvance3:
+  title: test_objective_DeliverAdvance3_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_metal
+      howMuch: 100
+      fromID: -1
+      toID: -1
+      possessionType: Resource
+      resourceTypeType: resorces
+      advance: true
+
+# test_objective_DeliverAdvance4_Title
+test_objective_DeliverAdvance4:
+  title: test_objective_DeliverAdvance4_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_metal
+      howMuch: 100
+      fromID: -1
+      toID: -1
+      possessionType: Resource
+      resourceTypeType: resorces
+      advance: true
+
+# test_objective_DeliverAdvance5_Title
+test_objective_DeliverAdvance5:
+  title: test_objective_DeliverAdvance5_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_resource_metal
+      howMuch: 100
+      fromID: -1
+      toID: -1
+      possessionType: Resource
+      resourceTypeType: resorces
+      advance: true
+      advanceObjectTypes: Asteroid
+
+# test_objective_DeliverAsteroid_Title
+test_objective_DeliverAsteroid:
+  title: test_objective_DeliverAsteroid_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: modules
+      deliverEntireAsteroid: true
+
+# test_objective_DeliverAsteroid2_Title
+test_objective_DeliverAsteroid2:
+  title: test_objective_DeliverAsteroid2_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: 21 LUTETIA
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: modules
+      deliverEntireAsteroid: true
+
+# test_objective_DeliverAsteroid3_Title
+test_objective_DeliverAsteroid3:
+  title: test_objective_DeliverAsteroid3_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  rewardsStartContract:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockDiscoverAsteroid
+    - rewardType: Unlock
+      unlock:
+        action: UnlockSetPushableAsteroid
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 1
+      fromID: 87 SYLVIA
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: modules
+      deliverEntireAsteroid: true
+
+# test_objective_DeliverCrew_Title
+test_objective_DeliverCrew:
+  title: test_objective_DeliverCrew_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      howMuch: 10
+      fromID: -1
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: crew
+
+# test_objective_DeliverModule_Title
+test_objective_DeliverModule:
+  title: test_objective_DeliverModule_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: id_SpaceModule_Probe
+      howMuch: 1
+      fromID: -1
+      toID: MARS
+      possessionType: Resource
+      resourceTypeType: modules
+
+# test_objective_ExplorationInterstellar_Title
+test_objective_ExplorationInterstellar:
+  title: test_objective_ExplorationInterstellar_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ExplorationInterstellar_Objective1
+      objectiveType: ExplorationInterstellar
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      advance: true
+      advanceObjectTypes: Asteroid
+      checkCompletedOnStart: false
+      explorationInterstellar:
+        condition: AllInList
+        number: 1
+        objects:
+          - checkMass: true
+            minMass: 3
+            maxMass: 20
+            checkHabitableZone: true
+
+# test_objective_ExplorationInterstellar2_Title
+test_objective_ExplorationInterstellar2:
+  title: test_objective_ExplorationInterstellar2_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ExplorationInterstellar_Objective1
+      objectiveType: ExplorationInterstellar
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      advance: true
+      advanceObjectTypes: Asteroid
+      checkCompletedOnStart: false
+      explorationInterstellar:
+        condition: AllInList
+        number: 1
+        objects:
+          - checkMass: true
+            minMass: 3
+            maxMass: 20
+            checkHabitableZone: true
+          - checkMass: false
+            minMass: 3
+            maxMass: 20
+            checkHabitableZone: true
+
+# test_objective_ExplorationInterstellar3_Title
+test_objective_ExplorationInterstellar3:
+  title: test_objective_ExplorationInterstellar3_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ExplorationInterstellar_Objective1
+      objectiveType: ExplorationInterstellar
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      advance: true
+      advanceObjectTypes: Asteroid
+      checkCompletedOnStart: false
+      explorationInterstellar:
+        condition: AllInList
+        number: 1
+        objects:
+          - checkMass: false
+            minMass: 0
+            maxMass: 0
+            checkHabitableZone: true
+
+# test_objective_ExplorationObjectNEW11_Title
+test_objective_ExplorationObjectNEW11:
+  title: test_objective_ExplorationObjectNEW11_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ExplorationObject_Objective1
+      objectiveType: ExplorationObject
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      advance: true
+      advanceObjectTypes: Asteroid
+      checkCompletedOnStart: false
+
+# test_objective_ExplorationObjectNEW12_Title
+test_objective_ExplorationObjectNEW12:
+  title: test_objective_ExplorationObjectNEW12_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ExplorationObject_Objective1b
+      objectiveType: ExplorationObject
+      howMuch: 10
+      fromID: -1
+      toID: -1
+      advance: true
+      advanceObjectTypes: Asteroid
+      checkCompletedOnStart: false
+
+# test_objective_GravityAssist_Title
+test_objective_GravityAssist:
+  title: test_objective_GravityAssist_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFlyGravityAssist_Objective1
+      objectiveType: ScheduleFlyGravityAssist
+      howMuch: 20
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockUIElement
+        unlockContractAdvance: OneOtherCompanyAndPlayer
+
+# test_objective_HabitabilityParameter_Title
+test_objective_HabitabilityParameter:
+  title: test_objective_HabitabilityParameter_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 0
+  stageTutorialToActive: 0
+  objectives:
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      changeHabitability:
+        parameter: Radiation
+        comparingType: Between
+        toCompare: 0
+        min: 0.5
+        max: 0.7
+        location: MARS
+
+# test_objective_HabitabilityParameter2_Title
+test_objective_HabitabilityParameter2:
+  title: test_objective_HabitabilityParameter2_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 0
+  stageTutorialToActive: 0
+  objectives:
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      changeHabitability:
+        parameter: Water
+        comparingType: Lesser
+        toCompare: 0.5
+        location: MARS
+
+# test_objective_HabitabilityParameter3_Title
+test_objective_HabitabilityParameter3:
+  title: test_objective_HabitabilityParameter3_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 0
+  stageTutorialToActive: 0
+  objectives:
+    - id: id_Contract_ChangeHabitabilityParameters_Objective1
+      objectiveType: ChangeHabitabilityParameters
+      changeHabitability:
+        parameter: Water
+        comparingType: Enlarge
+        toCompare: 0.7
+        location: MARS
+
+# test_objective_KontraktA_Title
+test_objective_KontraktA:
+  title: test_objective_KontraktA_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_small
+      fromID: EARTH
+      toID: -1
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_objective_KontraktC
+        parameter2: test_objective_KontraktA
+        unlockContractAdvance: PartOfContract
+
+# test_objective_KontraktB_Title
+test_objective_KontraktB:
+  title: test_objective_KontraktB_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_mid2
+      fromID: EARTH
+      toID: -1
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_objective_KontraktC
+        parameter2: test_objective_KontraktB
+        unlockContractAdvance: PartOfContract
+
+# test_objective_KontraktC_Title
+test_objective_KontraktC:
+  title: test_objective_KontraktC_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_CreatNewSpacecraft_Objective1
+      objectiveType: CreateSpaceCraft
+      productItem: spacecraft_chem_large
+      fromID: EARTH
+      toID: -1
+
+# test_objective_MakeEnergyProduction_Title
+test_objective_MakeEnergyProduction:
+  title: test_objective_MakeEnergyProduction_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MakeEnergyProduction_Objective1
+      objectiveType: MakeEnergyProduction
+      howMuch: 30
+      fromID: EARTH
+      toID: -1
+      advance: true
+
+# test_objective_MarketPlace_Title
+test_objective_MarketPlace:
+  title: test_objective_MarketPlace_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_MarketPlaceOffers_Objective1
+      objectiveType: MarketPlaceOffers
+      marketsOffers:
+        sellOffers: true
+        resource: id_resource_metal
+        howMuch: 100
+    - id: id_Contract_MarketPlaceOffers_Objective1
+      objectiveType: MarketPlaceOffers
+      marketsOffers:
+        sellOffers: false
+        resource: id_resource_metal
+        howMuch: 100
+    - id: id_Contract_MarketPlaceOffers_Objective1
+      objectiveType: MarketPlaceOffers
+      marketsOffers:
+        sellOffers: true
+        resource: id_resource_raremetal
+        howMuch: 50
+        location: MARS
+
+# test_objective_Move_Title
+test_objective_Move:
+  title: test_objective_Move_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Move_Objective1
+      objectiveType: Move
+      productItem: spacecraft_chem_small
+      fromID: EARTH
+      toID: LUNA
+
+# test_objective_Possession_Title
+test_objective_Possession:
+  title: test_objective_Possession_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: build_observatory
+      howMuch: 100
+      fromID: EARTH
+      toID: -1
+      fromIDString: Ear
+      possessionType: Facility
+
+# test_objective_PossessionNEW1_Title
+test_objective_PossessionNEW1:
+  title: test_objective_PossessionNEW1_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      howMuch: 10
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+
+# test_objective_PossessionNEW2_Title
+test_objective_PossessionNEW2:
+  title: test_objective_PossessionNEW2_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: build_lab
+      howMuch: 5
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Facility
+
+# test_objective_PossessionNEW3_Title
+test_objective_PossessionNEW3:
+  title: test_objective_PossessionNEW3_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_human
+      howMuch: 5
+      fromID: LUNA
+      toID: -1
+      fromIDString: Ear
+      possessionType: Resource
+
+# test_objective_PossessionNEW4_Title
+test_objective_PossessionNEW4:
+  title: test_objective_PossessionNEW4_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_metal
+      howMuch: 99999
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Resource
+
+# test_objective_PossessionNEW5_Title
+test_objective_PossessionNEW5:
+  title: test_objective_PossessionNEW5_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleCyclicalFly_Objective1
+      objectiveType: ScheduleCyclicalMission
+      productItem: id_resource_metal
+      howMuch: 99999
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      scheduleCyclicalFlyData:
+
+# test_objective_PossessionNEW6_Title
+test_objective_PossessionNEW6:
+  title: test_objective_PossessionNEW6_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleCyclicalFly_Objective1
+      objectiveType: ScheduleCyclicalMission
+      productItem: id_resource_metal
+      howMuch: 99999
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      scheduleCyclicalFlyData:
+
+# test_objective_PossessionNEW7_Title
+test_objective_PossessionNEW7:
+  title: test_objective_PossessionNEW7_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleCyclicalFly_Objective1
+      objectiveType: ScheduleCyclicalMission
+      productItem: id_resource_metal
+      howMuch: 99999
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      scheduleCyclicalFlyData:
+
+# test_objective_PossessionNEW8_Title
+test_objective_PossessionNEW8:
+  title: test_objective_PossessionNEW8_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleCyclicalFly_Objective1
+      objectiveType: ScheduleCyclicalMission
+      productItem: id_resource_metal
+      howMuch: 99999
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      scheduleCyclicalFlyData:
+
+# test_objective_PossessionNEW9_Title
+test_objective_PossessionNEW9:
+  title: test_objective_PossessionNEW9_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: module_construction
+      howMuch: 1
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: ResourceModule
+      advance: true
+      advanceObjectTypes: Asteroid
+      tutorialOnForThisObjective: false
+
+# test_objective_PossessionNEW10_Title
+test_objective_PossessionNEW10:
+  title: test_objective_PossessionNEW10_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      productItem: id_resource_raremetal
+      howMuch: 100
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Resource
+      advance: true
+      moonOfID: JUPITER
+
+# test_objective_PossessionNEW11_Title
+test_objective_PossessionNEW11:
+  title: test_objective_PossessionNEW11_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      howMuch: 10
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_objective_PossessionNEW12
+        unlockContractAdvance: AllCompany
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_objective_PossessionNEW13
+        unlockContractAdvance: OneOtherCompanyAndPlayer
+
+# test_objective_PossessionNEW12_Title
+test_objective_PossessionNEW12:
+  title: test_objective_PossessionNEW12_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      howMuch: 15
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+
+# test_objective_PossessionNEW13_Title
+test_objective_PossessionNEW13:
+  title: test_objective_PossessionNEW13_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      howMuch: 20
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_objective_PossessionNEW12
+        unlockContractAdvance: OneOtherCompanyAndPlayer
+
+# test_objective_PossessionNEW14_Title
+test_objective_PossessionNEW14:
+  title: test_objective_PossessionNEW14_Title
+  isLocked: true
+  hideUI: true
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Deliver_Objective1
+      objectiveType: Deliver
+      productItem: module_space_construction_cargo
+      howMuch: 1
+      fromID: EARTH
+      toID: EARTH [ORBIT]
+      possessionType: ResourceModule
+      resourceTypeType: modules
+      checkCompletedOnStart: false
+      tutorialOnForThisObjective: false
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_objective_PossessionNEW15
+
+# test_objective_PossessionNEW15_Title
+test_objective_PossessionNEW15:
+  title: test_objective_PossessionNEW15_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      howMuch: 20
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_objective_PossessionNEW12
+        unlockContractAdvance: OneOtherCompanyAndPlayer
+
+# test_objective_PossessionNEW16_Title
+test_objective_PossessionNEW16:
+  title: test_objective_PossessionNEW16_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      howMuch: 20
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+    - id: id_Contract_Possession_Objective2
+      objectiveType: Possession
+      howMuch: 10
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+      dummy: true
+      dummyVersion1: true
+      dummyAlternativeIDTranslate: qwer
+    - id: id_Contract_Possession_Objective3
+      objectiveType: Possession
+      howMuch: 50
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+      dummy: true
+      dummyAlternativeIDTranslate: asdf
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockContract
+        id: test_objective_PossessionNEW12
+        unlockContractAdvance: OneOtherCompanyAndPlayer
+
+# test_objective_PossessionNEW17_Title
+test_objective_PossessionNEW17:
+  title: test_objective_PossessionNEW17_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_Possession_Objective1
+      objectiveType: Possession
+      howMuch: 20
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+    - id: id_Contract_Possession_Objective2
+      objectiveType: Possession
+      howMuch: 10
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+      dummy: true
+      dummyVersion1: true
+      dummyAlternativeIDTranslate: qwer
+    - id: id_Contract_Possession_Objective3
+      objectiveType: Possession
+      howMuch: 50
+      fromID: -1
+      toID: -1
+      fromIDString: Ear
+      possessionType: Ship
+      dummy: true
+      dummyAlternativeIDTranslate: asdf
+  rewards:
+    - rewardType: Unlock
+      unlock:
+        action: UnlockUIElement
+        unlockContractAdvance: OneOtherCompanyAndPlayer
+
+# test_objective_Schedule_fly_Title
+test_objective_Schedule_fly:
+  title: test_objective_Schedule_fly_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: EARTH
+      toID: EARTH [ORBIT]
+
+# test_objective_Schedule_flyAdvance1_Title
+test_objective_Schedule_flyAdvance1:
+  title: test_objective_Schedule_flyAdvance1_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: EARTH
+      toID: -1
+      advance: true
+      moonOfID: MARS
+
+# test_objective_Schedule_flyAdvance2_Title
+test_objective_Schedule_flyAdvance2:
+  title: test_objective_Schedule_flyAdvance2_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: EARTH
+      toID: -1
+      advance: true
+      objectSubTypeID: ObjectSubType.AsteroidCarbon
+
+# test_objective_Schedule_flyAdvance3_Title
+test_objective_Schedule_flyAdvance3:
+  title: test_objective_Schedule_flyAdvance3_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: EARTH
+      toID: -1
+      advance: true
+
+# test_objective_Schedule_flyAdvance4_Title
+test_objective_Schedule_flyAdvance4:
+  title: test_objective_Schedule_flyAdvance4_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: EARTH
+      toID: -1
+      advance: true
+
+# test_objective_ScheduleReal_Title
+test_objective_ScheduleReal:
+  title: test_objective_ScheduleReal_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_ScheduleFly_Objective1
+      objectiveType: ScheduleFly
+      fromID: EARTH
+      toID: MARS
+
+# test_objective_Time_Title
+test_objective_Time:
+  title: test_objective_Time_Title
+  isLocked: false
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_launch_spin
+      fromID: EARTH
+      toID: -1
+      dateTimeStringLimit: 2030-01-01 00:00:00
+
+# test_objective_Time2_Title
+test_objective_Time2:
+  title: test_objective_Time2_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: false
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  objectives:
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: build_launch_spin
+      fromID: EARTH
+      toID: -1
+
+# test_contract_SpaceStation_Title
+test_contract_SpaceStation:
+  title: test_contract_SpaceStation_Title
+  isLocked: true
+  hideUI: false
+  skipForAI: true
+  isFinalContract: false
+  waitForComplete: false
+  showUIAvailable: false
+  cancelOn: false
+  yearsToExpire: 2
+  stageTutorialToActive: 0
+  dateStartActive: 01/01/1959
+  startID: EARTH [ORBIT]
+  rewardsStartContract:
+    - rewardType: GiveObject
+      facility: build_space_interstellarconstruction
+      buildImmediately: true
+  objectives:
+    - id: id_Contract_BuildFacility_Objective1
+      objectiveType: BuildFacility
+      productItem: station_rotary_construction
+      howMuch: 1
+      fromID: -1
+      toID: -1
+    - id: id_Contract_BuildFacility_Objective2
+      objectiveType: BuildFacility
+      productItem: module_station_lab
+      howMuch: 1
+      fromID: -999
+      toID: -1
+      afterFindAutomaticFillFromID: true
+      fromIDUseTranslateBeforeBuild: station_rotary_construction
+  rewards:
+    - rewardType: Money
+      amount: 820000000
+

@@ -14,6 +14,8 @@ research_agriculture_1:
   unlocks:
     - action: UnlockFacility
       id: build_farm
+    - action: UnlockFacility
+      id: module_station_farm
 
 # REGOLITH ADAPTATION (ResearchDefinition)
 research_agriculture_2:
@@ -32,11 +34,16 @@ research_agriculture_2:
     - action: UnlockBonus
       id: II
       bonus: ProductionEfficiency
-      bonusParameter: 15
+      bonusParameter: 25
+      targets:
+        - build_farm
+    - action: UnlockBonus
+      bonus: BuildCost
+      bonusParameter: 10
       targets:
         - build_farm
 
-# HYDROPONICS (ResearchDefinition)
+# AEROPONICS (ResearchDefinition)
 research_agriculture_3:
   isLocked: false
   isLockedForUI: false
@@ -59,6 +66,34 @@ research_agriculture_3:
 
 # RADIOTROPHIC FUNGI (ResearchDefinition)
 research_agriculture_4:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 3000000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: None
+
+# LOW-G GMO (ResearchDefinition)
+research_agriculture_5:
+  isLocked: true
+  isLockedForUI: true
+  workHourToComplete: 4080000
+  researchType: Biotech
+  researchSubType: SubBranch_Biotech
+  stage: 0
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  unlocks:
+    - action: None
+
+# AGRICULTURAL COMPLEX (ResearchDefinition)
+research_agriculture_6:
   isLocked: false
   isLockedForUI: false
   workHourToComplete: 3000000
@@ -71,34 +106,8 @@ research_agriculture_4:
   requirementsResearch:
     - research_agriculture_2
   unlocks:
-    - action: UnlockBonus
-      id: IV
-      bonus: BuildCost
-      bonusParameter: -20
-      targets:
-        - build_outpost
-        - build_habitat
-
-# LOW-G GMO (ResearchDefinition)
-research_agriculture_5:
-  isLocked: false
-  isLockedForUI: false
-  workHourToComplete: 4080000
-  researchType: Biotech
-  researchSubType: SubBranch_Biotech
-  stage: 0
-  subStage: -1
-  showInTree: false
-  newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_agriculture_3
-  unlocks:
-    - action: UnlockBonus
-      id: III
-      bonus: ProductionEfficiency
-      bonusParameter: 25
-      targets:
-        - build_farm
+    - action: UnlockFacility
+      id: build_earthfarm
 
 # BIOREACTORS (ResearchDefinition)
 research_biotech_1:
@@ -116,14 +125,14 @@ research_biotech_1:
   unlocks:
     - action: UnlockBonus
       bonus: ProductionEfficiency
-      bonusParameter: 5
+      bonusParameter: 10
       targets:
         - build_farm
 
 # KNALLGAS BACTERIA FARMS (ResearchDefinition)
 research_biotech_2:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 2160000
   researchType: Biotech
   researchSubType: SubBranch_Biotech
@@ -131,20 +140,13 @@ research_biotech_2:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_biotech_1
   unlocks:
-    - action: UnlockBonus
-      id: I
-      bonus: ProductionEfficiency
-      bonusParameter: 10
-      targets:
-        - build_farm
+    - action: None
 
 # CLOSED-CYCLE ALGAE (ResearchDefinition)
 research_biotech_3:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 3000000
   researchType: Biotech
   researchSubType: SubBranch_Biotech
@@ -152,20 +154,8 @@ research_biotech_3:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_biotech_2
   unlocks:
-    - action: UnlockBonus
-      id: I
-      bonus: LifeSupportConsumption
-      bonusParameter: 10
-      targets:
-        - All
-    - action: UnlockBonus
-      bonus: LifeSupportConsumptionOnShip
-      bonusParameter: 10
-      targets:
-        - All
+    - action: None
 
 # GENETIC ENGINEERING (ResearchDefinition)
 research_biotech_4:
@@ -183,7 +173,7 @@ research_biotech_4:
   unlocks:
     - action: UnlockBonus
       bonus: LifeSupportConsumption
-      bonusParameter: 5
+      bonusParameter: 15
       targets:
         - All
     - action: UnlockBonus
@@ -284,14 +274,14 @@ research_category_electricprop:
 
 # ELECTROMAGNETISM (ResearchDefinition)
 research_category_electromag:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 648000
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
   stage: 0
   subStage: -1
-  showInTree: true
+  showInTree: false
   newViewResearchTreeParent: null
   unlocks:
     - action: None
@@ -308,9 +298,13 @@ research_category_fusionprop:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_electromag_3
+    - research_electromag_2
   unlocks:
-    - action: None
+    - action: UnlockBonus
+      bonus: PowerProduction
+      bonusParameter: 10
+      targets:
+        - build_power_fusion
 
 # INTERSTELLAR TRAVEL (ResearchDefinition)
 research_category_interstellar:
@@ -326,7 +320,7 @@ research_category_interstellar:
   requirementsResearch:
     - research_sc_zeus
     - research_lifesup_14
-    - research_mat_fibre4
+    - research_mat_diamondoid
   unlocks:
     - action: UnlockFacility
       id: build_space_interstellarconstruction
@@ -434,6 +428,8 @@ research_category_nukepower:
   unlocks:
     - action: UnlockFacility
       id: build_power_nuke
+    - action: UnlockFacility
+      id: module_station_power_nuke
 
 # NUCLEAR PROPULSION (ResearchDefinition)
 research_category_nukeprop:
@@ -566,7 +562,7 @@ research_category_terraforming:
 research_chem_main1:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 1200000
+  workHourToComplete: 600000
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
@@ -582,7 +578,7 @@ research_chem_main1:
 research_chem_main2:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 2160000
+  workHourToComplete: 1000000
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
@@ -603,7 +599,7 @@ research_chem_main2:
 research_chem_main3:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 3000000
+  workHourToComplete: 1200000
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
@@ -624,7 +620,7 @@ research_chem_main3:
 research_chem_main4:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 4080000
+  workHourToComplete: 1200000
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
@@ -661,7 +657,7 @@ research_chem_main4:
 research_chem_main5:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 4800000
+  workHourToComplete: 1200000
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
@@ -698,7 +694,7 @@ research_chem_main5:
 research_chem_main6:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 5520000
+  workHourToComplete: 3600000
   researchType: Engineering
   researchSubType: SubBranch_Chemical
   stage: 0
@@ -723,6 +719,7 @@ research_chem_main6:
         - eng_chemsmall
         - eng_chemhelios
         - eng_chemorion
+        - eng_chemargo
       targetVisibility:
         - id: eng_chemsmall
           showOnUI: false
@@ -730,6 +727,25 @@ research_chem_main6:
           showOnUI: false
         - id: eng_chemorion
           showOnUI: false
+        - id: eng_chemargo
+          showOnUI: false
+
+# COMMUNICATION SATELLITES (ResearchDefinition)
+research_commsats:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 3000000
+  researchType: Physics
+  researchSubType: SubBranch_Exploration
+  stage: 0
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
+    - research_observation_3
+  unlocks:
+    - action: UnlockFacility
+      id: build_commsat_orbit
 
 # MACHINE LEARNING (ResearchDefinition)
 research_computing_ai1:
@@ -955,19 +971,8 @@ research_electricprop_2:
   showInTree: false
   newViewResearchTreeParent: null
   unlocks:
-    - action: UnlockBonus
+    - action: None
       id: II
-      bonus: ComponentExhaustV
-      bonusParameter: 25
-      targets:
-        - eng_electric
-        - eng_electrichermes
-        - eng_electricmpd
-      targetVisibility:
-        - id: eng_electricmpd
-          showOnUI: false
-        - id: eng_electrichermes
-          showOnUI: false
 
 # ELECTRODELESS ION GENERATION (ResearchDefinition)
 research_electricprop_3:
@@ -981,19 +986,8 @@ research_electricprop_3:
   showInTree: false
   newViewResearchTreeParent: null
   unlocks:
-    - action: UnlockBonus
-      id: V
-      bonus: ComponentThrust
-      bonusParameter: 50
-      targets:
-        - eng_electric
-        - eng_electrichermes
-        - eng_electricmpd
-      targetVisibility:
-        - id: eng_electricmpd
-          showOnUI: false
-        - id: eng_electrichermes
-          showOnUI: false
+    - action: None
+      id: 0
 
 # MULTI-STAGE GRID (ResearchDefinition)
 research_electricprop_4:
@@ -1007,19 +1001,8 @@ research_electricprop_4:
   showInTree: false
   newViewResearchTreeParent: null
   unlocks:
-    - action: UnlockBonus
-      id: III
-      bonus: ComponentExhaustV
-      bonusParameter: 25
-      targets:
-        - eng_electric
-        - eng_electrichermes
-        - eng_electricmpd
-      targetVisibility:
-        - id: eng_electricmpd
-          showOnUI: false
-        - id: eng_electrichermes
-          showOnUI: false
+    - action: None
+      id: 0
 
 # MPD (ResearchDefinition)
 research_electricprop_5:
@@ -1107,14 +1090,13 @@ research_electromag_1:
   isLockedForUI: false
   workHourToComplete: 2160000
   researchType: Physics
-  researchSubType: SubBranch_Electromagnetism
+  researchSubType: SubBranch_Material
   stage: 0
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_category_electromag
-    - research_mat_superconductor1
+    - research_mat_superconductor2
   unlocks:
     - action: UnlockBonus
       bonus: MaintenanceReduce
@@ -1138,11 +1120,13 @@ research_electromag_2:
   unlocks:
     - action: UnlockFacility
       id: build_power_fusion
+    - action: UnlockFacility
+      id: module_station_power_fusion
 
 # MAGNETIC NOZZLE (ResearchDefinition)
 research_electromag_3:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 4800000
   researchType: Physics
   researchSubType: SubBranch_Fusion
@@ -1150,8 +1134,6 @@ research_electromag_3:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_electromag_2
   unlocks:
     - action: None
 
@@ -1175,13 +1157,13 @@ research_electromag_7:
   isLockedForUI: false
   workHourToComplete: 1200000
   researchType: Physics
-  researchSubType: SubBranch_Electromagnetism
+  researchSubType: SubBranch_Material
   stage: 0
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_category_electromag
+    - research_mat_metal4
   unlocks:
     - action: UnlockBonus
       bonus: ProductionEfficiency
@@ -1191,8 +1173,8 @@ research_electromag_7:
 
 # LASERS (ResearchDefinition)
 research_electromag_8:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 1200000
   researchType: Physics
   researchSubType: SubBranch_Electromagnetism
@@ -1200,8 +1182,6 @@ research_electromag_8:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_category_electromag
   unlocks:
     - action: None
 
@@ -1211,18 +1191,22 @@ research_electromag_9:
   isLockedForUI: false
   workHourToComplete: 2160000
   researchType: Physics
-  researchSubType: SubBranch_Electromagnetism
+  researchSubType: SubBranch_Power
   stage: 0
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_electromag_8
+    - research_category_power
   unlocks:
     - action: UnlockFacility
       id: build_power_receiver
     - action: UnlockFacility
       id: build_power_transfer
+    - action: UnlockFacility
+      id: module_station_power_transfer
+    - action: UnlockFacility
+      id: module_station_power_receiver
 
 # FUSION THEORY (ResearchDefinition)
 research_fusionpower_1:
@@ -1259,7 +1243,7 @@ research_fusionprop_1:
     - action: UnlockBonus
       id: I
       bonus: ComponentExhaustV
-      bonusParameter: 250
+      bonusParameter: 200
       targets:
         - eng_fusion
         - eng_fusionnike
@@ -1300,7 +1284,7 @@ research_fusionprop_2:
     - action: UnlockBonus
       id: II
       bonus: ComponentExhaustV
-      bonusParameter: 150
+      bonusParameter: 100
       targets:
         - eng_fusion
         - eng_fusionnike
@@ -1376,7 +1360,7 @@ research_fusionprop_4:
     - action: UnlockBonus
       id: III
       bonus: ComponentExhaustV
-      bonusParameter: 20
+      bonusParameter: 25
       targets:
         - eng_fusion
         - eng_fusionnike
@@ -1421,7 +1405,7 @@ research_fusionprop_4:
 research_launch_elevator:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 4800000
+  workHourToComplete: 5600000
   researchType: Engineering
   researchSubType: SubBranch_LaunchFacility
   stage: 0
@@ -1430,10 +1414,12 @@ research_launch_elevator:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_launch_magrail
-    - research_mat_fibre4
+    - research_mat_fibre3
   unlocks:
     - action: UnlockFacility
       id: build_launch_elevator
+    - action: UnlockContract
+      id: contract_general_spaceelevator
 
 # ELECTROMAGNETIC CATAPULT (ResearchDefinition)
 research_launch_magnetic_catapult:
@@ -1604,8 +1590,8 @@ research_lifesup_4:
 
 # IMPROVED RATION PACKING (ResearchDefinition)
 research_lifesup_5:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 2160000
   researchType: Biotech
   researchSubType: SubBranch_LifeSupport
@@ -1613,18 +1599,8 @@ research_lifesup_5:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_lifesup_1
   unlocks:
-    - action: UnlockBonus
-      id: II
-      bonus: LifeSupportConsumption
-      bonusParameter: 15
-      targets:
-        - All
-    - action: UnlockBonus
-      bonus: LifeSupportConsumptionOnShip
-      bonusParameter: 15
+    - action: None
 
 # IMPROVED ATMOSPHERE RECYCLING (ResearchDefinition)
 research_lifesup_6:
@@ -1638,12 +1614,12 @@ research_lifesup_6:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_lifesup_5
+    - research_lifesup_1
   unlocks:
     - action: UnlockBonus
       id: III
       bonus: LifeSupportConsumption
-      bonusParameter: 15
+      bonusParameter: 25
       targets:
         - All
 
@@ -1659,7 +1635,7 @@ research_lifesup_8:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_lifesup_11
+    - research_lifesup_9
   unlocks:
     - action: UnlockFacility
       id: build_space_0gcolony
@@ -1695,7 +1671,7 @@ research_lifesup_10:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_lifesup_11
+    - research_lifesup_9
   unlocks:
     - action: UnlockBonus
       id: I
@@ -1706,6 +1682,8 @@ research_lifesup_10:
         - build_habitat
         - build_habitatdome
         - build_habitatcity
+    - action: UnlockFacility
+      id: build_habitatunder
 
 # COLONY CONSTRUCTION (ResearchDefinition)
 research_lifesup_11:
@@ -1718,11 +1696,8 @@ research_lifesup_11:
   subStage: -100
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_lifesup_9
   unlocks:
-    - action: UnlockFacility
-      id: build_habitatunder
+    - action: None
 
 # ON-SITE 3D PRINTING (ResearchDefinition)
 research_lifesup_12:
@@ -1736,7 +1711,7 @@ research_lifesup_12:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_lifesup_11
+    - research_lifesup_9
   unlocks:
     - action: UnlockBonus
       id: II
@@ -1748,6 +1723,8 @@ research_lifesup_12:
       id: build_habitatdome
     - action: UnlockFacility
       id: build_habitatcity
+    - action: UnlockFacility
+      id: module_station_habitat
 
 # PERMANENT ORBITAL PRESENCE (ResearchDefinition)
 research_lifesup_13:
@@ -1760,21 +1737,9 @@ research_lifesup_13:
   subStage: 60
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_lifesup_8
   unlocks:
-    - action: UnlockBonus
+    - action: None
       id: I
-      bonus: BuildCost
-      bonusParameter: 40
-      targets:
-        - build_space_construction
-        - module_space_construction_cargo
-        - module_0ghabitat
-        - build_space_fuel
-      targetVisibility:
-        - id: module_space_construction_cargo
-          showOnUI: false
 
 # IN-ORBIT PRODUCTION (ResearchDefinition)
 research_lifesup_14:
@@ -1788,7 +1753,7 @@ research_lifesup_14:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_lifesup_13
+    - research_lifesup_8
   unlocks:
     - action: UnlockBonus
       id: I
@@ -1819,7 +1784,7 @@ research_lifesup_15:
     - action: UnlockBonus
       id: V
       bonus: LifeSupportConsumptionOnShip
-      bonusParameter: 25
+      bonusParameter: 35
       targets:
         - All
 
@@ -1841,7 +1806,7 @@ research_lifesup_16:
     - action: UnlockBonus
       id: VI
       bonus: LifeSupportConsumptionOnShip
-      bonusParameter: 30
+      bonusParameter: 35
       targets:
         - All
 
@@ -1899,8 +1864,8 @@ research_lv2_nukemid:
 
 # ALUMINIUM-ICE ROCKETS (ResearchDefinition)
 research_lv_alice:
-  isLocked: true
-  isLockedForUI: true
+  isLocked: false
+  isLockedForUI: false
   workHourToComplete: 864000
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
@@ -1908,11 +1873,19 @@ research_lv_alice:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
+  requirementsResearch:
+    - research_lv_main3
   unlocks:
     - action: UnlockVehicleType
       id: id_Rocket_RocketType5
     - action: UnlockVehicleType
       id: id_Rocket_RocketType6
+    - action: UnlockBonus
+      bonus: AdditionalBuildLvForConstructionModule
+      bonusParameter: 0
+      targets:
+        - id_Rocket_RocketType5
+        - id_Rocket_RocketType6
 
 # EARLY LAUNCH SYSTEMS (ResearchDefinition)
 research_lv_main1:
@@ -1929,12 +1902,13 @@ research_lv_main1:
     - research_category_lv
     - research_chem_main2
   unlocks:
-    - action: None
+    - action: UnlockVehicleType
+      id: id_Rocket_RocketType7
 
 # SUPERHEAVY LAUNCH (ResearchDefinition)
 research_lv_main2:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 4080000
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
@@ -1942,11 +1916,8 @@ research_lv_main2:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_lv_main1
   unlocks:
-    - action: UnlockVehicleType
-      id: id_Rocket_RocketType7
+    - action: None
 
 # REUSABLE LAUNCH VEHICLES (ResearchDefinition)
 research_lv_main3:
@@ -1979,11 +1950,33 @@ research_lv_main4:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_lv_main2
+    - research_lv_main1
     - research_nukeprop_7
   unlocks:
     - action: UnlockVehicleType
       id: lv_nuke_small
+
+# MODULAR ROCKET CONSTRUCTION (ResearchDefinition)
+research_lv_moduleconstruction:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2592000
+  researchType: Engineering
+  researchSubType: SubBranch_LaunchVehicle
+  stage: 0
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
+    - research_lv_alice
+    - research_lifesup_12
+  unlocks:
+    - action: UnlockBonus
+      bonus: AdditionalBuildLvForConstructionModule
+      bonusParameter: 0
+      targets:
+        - id_Rocket_RocketType3
+        - id_Rocket_RocketType4
 
 # IMPROVED STACK ASSEMBLY (ResearchDefinition)
 research_lv_upgr1:
@@ -2008,8 +2001,8 @@ research_lv_upgr1:
 
 # OPTIMIZED HEAT SHIELDS (ResearchDefinition)
 research_lv_upgr2:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 5520000
   researchType: Engineering
   researchSubType: SubBranch_LaunchVehicle
@@ -2017,15 +2010,8 @@ research_lv_upgr2:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_lv_main3
   unlocks:
-    - action: UnlockBonus
-      id: V
-      bonus: MaintenanceReduce
-      bonusParameter: 40
-      targets:
-        - LV
+    - action: None
 
 # IMPROVED REUSABLE ROCKETS (ResearchDefinition)
 research_lv_upgr3:
@@ -2097,6 +2083,8 @@ research_mat_chips1:
   unlocks:
     - action: UnlockFacility
       id: build_electronicsfactory
+    - action: UnlockFacility
+      id: module_station_electronic_prod
 
 # IMPROVED ELECTRONICS PRODUCTION (ResearchDefinition)
 research_mat_chips2:
@@ -2137,6 +2125,11 @@ research_mat_diamondoid:
       bonusParameter: 10
       targets:
         - Facility
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 20
+      targets:
+        - build_polymerproduction
 
 # SPACE-WORTHY FIBERS (ResearchDefinition)
 research_mat_fibre1:
@@ -2167,13 +2160,12 @@ research_mat_fibre2:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_category_mat
     - research_mat_fibre1
   unlocks:
     - action: UnlockBonus
       id: I
       bonus: ProductionEfficiency
-      bonusParameter: 10
+      bonusParameter: 15
       targets:
         - build_polymerproduction
     - action: UnlockBonus
@@ -2200,7 +2192,7 @@ research_mat_fibre3:
     - action: UnlockBonus
       id: II
       bonus: ProductionEfficiency
-      bonusParameter: 10
+      bonusParameter: 15
       targets:
         - build_polymerproduction
     - action: UnlockBonus
@@ -2212,8 +2204,8 @@ research_mat_fibre3:
 
 # MEGA-SCALE CARBON ALLOTROPE APPLICATION (ResearchDefinition)
 research_mat_fibre4:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 4080000
   researchType: Engineering
   researchSubType: SubBranch_Material
@@ -2221,19 +2213,8 @@ research_mat_fibre4:
   subStage: 100
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_mat_fibre3
   unlocks:
-    - action: UnlockBonus
-      bonus: BuildSpeed
-      bonusParameter: 10
-      targets:
-        - Facility
-    - action: UnlockBonus
-      bonus: ProductionEfficiency
-      bonusParameter: 30
-      targets:
-        - build_polymerproduction
+    - action: None
 
 # SPACE ALLOYS (ResearchDefinition)
 research_mat_metal1:
@@ -2257,8 +2238,8 @@ research_mat_metal1:
 
 # VACUUM FORGING (ResearchDefinition)
 research_mat_metal2:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 2160000
   researchType: Engineering
   researchSubType: SubBranch_Material
@@ -2266,15 +2247,9 @@ research_mat_metal2:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_mat_metal1
   unlocks:
-    - action: UnlockBonus
+    - action: None
       id: I
-      bonus: ProductionEfficiency
-      bonusParameter: 10
-      targets:
-        - build_alloysmelting
 
 # ADVANCED ALLOYING TECHNIQUES (ResearchDefinition)
 research_mat_metal3:
@@ -2288,10 +2263,15 @@ research_mat_metal3:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_mat_metal2
+    - research_mat_metal1
   unlocks:
     - action: UnlockFacility
       id: build_exoticalloy
+    - action: UnlockBonus
+      bonus: ProductionEfficiency
+      bonusParameter: 10
+      targets:
+        - build_alloysmelting
 
 # IMPROVED ALLOY PRODUCTION (ResearchDefinition)
 research_mat_metal4:
@@ -2316,8 +2296,8 @@ research_mat_metal4:
 
 # IMPROVED REACTOR VESSELS (ResearchDefinition)
 research_mat_refractory:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 1200000
   researchType: Physics
   researchSubType: SubBranch_Nuclear
@@ -2325,31 +2305,23 @@ research_mat_refractory:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_category_nukepower
   unlocks:
     - action: None
 
 # HIGH-TEMPERATURE SUPERCONDUCTORS (ResearchDefinition)
 research_mat_superconductor1:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 1200000
   researchType: Physics
-  researchSubType: SubBranch_Electromagnetism
+  researchSubType: SubBranch_Material
   stage: 0
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_category_electromag
   unlocks:
-    - action: UnlockBonus
+    - action: None
       id: I
-      bonus: PowerProduction
-      bonusParameter: 10
-      targets:
-        - All
 
 # ROOM-TEMPERATURE SUPERCONDUCTORS (ResearchDefinition)
 research_mat_superconductor2:
@@ -2357,13 +2329,13 @@ research_mat_superconductor2:
   isLockedForUI: false
   workHourToComplete: 2160000
   researchType: Physics
-  researchSubType: SubBranch_Electromagnetism
+  researchSubType: SubBranch_Material
   stage: 0
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_mat_superconductor1
+    - research_mat_metal1
   unlocks:
     - action: UnlockBonus
       id: I
@@ -2374,8 +2346,8 @@ research_mat_superconductor2:
 
 # DEBRIS SHIELDS (ResearchDefinition)
 research_mat_upgr1:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 1200000
   researchType: Engineering
   researchSubType: SubBranch_Material
@@ -2383,24 +2355,14 @@ research_mat_upgr1:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_category_mat
   unlocks:
-    - action: UnlockBonus
+    - action: None
       id: I
-      bonus: SCMassBase
-      bonusParameter: 10
-      targets:
-        - spacecraft_chem_large
-        - spacecraft_electric_small
-        - spacecraft_nuke_small
-        - spacecraft_electric_mid
-        - spacecraft_chem_mid2
 
 # AEROGELS (ResearchDefinition)
 research_mat_upgr2:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 2160000
   researchType: Engineering
   researchSubType: SubBranch_Material
@@ -2408,20 +2370,13 @@ research_mat_upgr2:
   subStage: -1
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_category_mat
-    - research_mat_upgr1
   unlocks:
-    - action: UnlockBonus
-      bonus: MaintenanceReduce
-      bonusParameter: 25
-      targets:
-        - SC
+    - action: None
 
 # METAMATERIALS (ResearchDefinition)
 research_mat_upgr3:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 2160000
   researchType: Engineering
   researchSubType: SubBranch_Electromagnetism
@@ -2429,16 +2384,11 @@ research_mat_upgr3:
   subStage: -50
   showInTree: false
   newViewResearchTreeParent: null
-  requirementsResearch:
-    - research_category_mat
-    - research_electromag_7
   unlocks:
     - action: UnlockBonus
       id: I
       bonus: PowerProduction
-      bonusParameter: 25
-      targets:
-        - build_power_solar
+      bonusParameter: 0
 
 # IN-SITU RESOURCE UTILIZATION (ResearchDefinition)
 research_mine_1:
@@ -2603,6 +2553,26 @@ research_mine_8:
       targets:
         - build_uranmine
 
+# AUTOMATED FISSILE EXTRACTION (ResearchDefinition)
+research_mine_9:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 4800000
+  researchType: Engineering
+  researchSubType: SubBranch_Mining
+  stage: 0
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: research_mine_6
+  requirementsResearch:
+    - research_mine_6
+    - research_mine_5
+  unlocks:
+    - action: UnlockBonus
+      id: module_basemining
+      bonus: AdditionalMinedResources
+      bonusParameter: 0
+
 # ORBITAL GAS EXTRACTOR (ResearchDefinition)
 research_mine_atmoscoop:
   isLocked: false
@@ -2632,7 +2602,7 @@ research_nukepower_1:
   showInTree: false
   newViewResearchTreeParent: null
   requirementsResearch:
-    - research_mat_refractory
+    - research_category_nukepower
   unlocks:
     - action: UnlockBonus
       id: I
@@ -2664,8 +2634,8 @@ research_nukepower_2:
 
 # HIGH TEMPERATURE NTR (ResearchDefinition)
 research_nukeprop_1:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 864000
   researchType: Physics
   researchSubType: SubBranch_Nuclear
@@ -2674,36 +2644,13 @@ research_nukeprop_1:
   showInTree: false
   newViewResearchTreeParent: null
   unlocks:
-    - action: UnlockBonus
+    - action: None
       id: I
-      bonus: ComponentExhaustV
-      bonusParameter: 25
-      targets:
-        - eng_nuke
-        - eng_nukeprometheus
-      targetVisibility:
-        - id: eng_nukenter
-          showOnUI: false
-        - id: eng_nukeprometheus
-          showOnUI: false
-    - action: UnlockBonus
-      id: VII
-      bonus: ComponentThrust
-      bonusParameter: 10
-      targets:
-        - eng_nuke
-        - eng_nukenter
-        - eng_nukeprometheus
-      targetVisibility:
-        - id: eng_nukenter
-          showOnUI: false
-        - id: eng_nukeprometheus
-          showOnUI: false
 
 # HELIUM LOOP CYCLE (ResearchDefinition)
 research_nukeprop_2:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 1152000
   researchType: Physics
   researchSubType: SubBranch_Nuclear
@@ -2712,19 +2659,8 @@ research_nukeprop_2:
   showInTree: false
   newViewResearchTreeParent: null
   unlocks:
-    - action: UnlockBonus
+    - action: None
       id: II
-      bonus: ComponentExhaustV
-      bonusParameter: 25
-      targets:
-        - eng_nuke
-        - eng_nukeprometheus
-        - eng_nukenter
-      targetVisibility:
-        - id: eng_nukenter
-          showOnUI: false
-        - id: eng_nukeprometheus
-          showOnUI: false
 
 # NUCLEAR THERMAL ELECTRIC ROCKET (ResearchDefinition)
 research_nukeprop_3:
@@ -2756,8 +2692,8 @@ research_nukeprop_3:
 
 # MPD-BASED NTER (ResearchDefinition)
 research_nukeprop_4:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 1.0368E+07
   researchType: Physics
   researchSubType: SubBranch_Nuclear
@@ -2826,8 +2762,8 @@ research_nukeprop_5:
 
 # ADVANCED LIQUID CORE (ResearchDefinition)
 research_nukeprop_6:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 1.3824E+07
   researchType: Physics
   researchSubType: SubBranch_Nuclear
@@ -2926,8 +2862,8 @@ research_observation_1:
 
 # RADAR ASTRONOMY (ResearchDefinition)
 research_observation_2:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 1728000
   researchType: Physics
   researchSubType: SubBranch_Exploration
@@ -2995,7 +2931,7 @@ research_power_chem:
 research_power_geo:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 1200000
+  workHourToComplete: 432000
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 0
@@ -3044,6 +2980,8 @@ research_power_solar1:
   unlocks:
     - action: UnlockFacility
       id: build_power_solar
+    - action: UnlockFacility
+      id: module_station_power_solar
 
 # IMPROVED SOLAR CELLS (ResearchDefinition)
 research_power_solar2:
@@ -3070,7 +3008,7 @@ research_power_solar2:
 research_power_wind:
   isLocked: false
   isLockedForUI: false
-  workHourToComplete: 1200000
+  workHourToComplete: 432000
   researchType: Physics
   researchSubType: SubBranch_Power
   stage: 0
@@ -3096,7 +3034,7 @@ research_robotics_crew1:
   newViewResearchTreeParent: null
   requirementsResearch:
     - research_category_robotics
-    - research_mat_metal2
+    - research_mat_metal3
   unlocks:
     - action: UnlockBonus
       id: I
@@ -3568,6 +3506,40 @@ research_sc_zeus:
     - action: UnlockSpacecraftType
       id: spacecraft_fusion_large
 
+# MODULAR MICROGRAVITY INFRASTRUCTURE (ResearchDefinition)
+research_station_modular:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 2160000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  subStage: -90
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
+    - research_lifesup_9
+  unlocks:
+    - action: UnlockFacility
+      id: station_modular_construction
+
+# MODULAR SPIN-GRAV INFRASTRUCTURE (ResearchDefinition)
+research_station_rotating:
+  isLocked: false
+  isLockedForUI: false
+  workHourToComplete: 5520000
+  researchType: Biotech
+  researchSubType: SubBranch_Colonization
+  stage: 0
+  subStage: -1
+  showInTree: false
+  newViewResearchTreeParent: null
+  requirementsResearch:
+    - research_lifesup_14
+  unlocks:
+    - action: UnlockFacility
+      id: station_rotary_construction
+
 # MARS BACTERIA (ResearchDefinition)
 research_terraforming_1:
   isLocked: true
@@ -3605,8 +3577,8 @@ research_terraforming_2:
 
 # PHOTOSYNTHETIC MICROBES (ResearchDefinition)
 research_terraforming_3:
-  isLocked: false
-  isLockedForUI: false
+  isLocked: true
+  isLockedForUI: true
   workHourToComplete: 2.7648E+07
   researchType: Biotech
   researchSubType: SubBranch_Terraforming
