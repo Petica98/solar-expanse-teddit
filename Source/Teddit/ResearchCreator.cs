@@ -68,7 +68,7 @@ namespace Teddit
                 string iconFull = Path.IsPathRooted(iconRelPath)
                     ? iconRelPath
                     : Path.Combine(modDir, iconRelPath);
-                var sprite = FacilityCreator.LoadSprite(iconFull, id);
+                var sprite = FacilityCreator.LoadSprite(iconFull, id, IconKind.Research, IconLayout.FromDef(def));
                 if (sprite != null) rd.Sprite = sprite;
             }
 
