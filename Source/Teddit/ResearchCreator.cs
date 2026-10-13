@@ -69,7 +69,12 @@ namespace Teddit
                     ? iconRelPath
                     : Path.Combine(modDir, iconRelPath);
                 var sprite = FacilityCreator.LoadSprite(iconFull, id, IconKind.Research, IconLayout.FromDef(def));
-                if (sprite != null) rd.Sprite = sprite;
+                if (sprite != null)
+                {
+                    rd.Sprite = sprite;
+                    // Inline <sprite name=...> tags use the spriteId string, not Sprite.name.
+                    FacilityCreator.SetField(rd, "spriteId", id);
+                }
             }
 
             // Translations
