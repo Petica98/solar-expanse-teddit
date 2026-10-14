@@ -26,7 +26,7 @@ namespace Teddit
             if (resource == null || string.IsNullOrEmpty(resource.ID)) return;
             _namedSpriteResourceIds.Add(resource.ID);
             if (resource.Sprite != null)
-                FacilityCreator.EnsureSpriteRegisteredWithTMP(resource.Sprite, resource.Sprite.name);
+                FacilityCreator.EnsureSpriteRegisteredWithTMP(resource.Sprite, resource.Sprite.name, IconKind.Resource);
         }
 
         internal static string GetIconString(ResourceDefinition resource)
@@ -120,7 +120,7 @@ namespace Teddit
             {
                 sprite.name = id;
                 FacilityCreator.SetField(res, "sprite2", sprite);
-                FacilityCreator.EnsureSpriteRegisteredWithTMP(sprite, sprite.name);
+                FacilityCreator.EnsureSpriteRegisteredWithTMP(sprite, sprite.name, IconKind.Resource, IconLayout.FromDef(def));
             }
 
             string name = FacilityCreator.GetVal<string>(def, "name", null);
@@ -144,7 +144,7 @@ namespace Teddit
                 {
                     sprite.name = id;
                     FacilityCreator.SetField(resource, "sprite2", sprite);
-                    FacilityCreator.EnsureSpriteRegisteredWithTMP(sprite, sprite.name);
+                    FacilityCreator.EnsureSpriteRegisteredWithTMP(sprite, sprite.name, IconKind.Resource, IconLayout.FromDef(fields));
                     changedSprite = true;
                 }
             }
@@ -262,7 +262,7 @@ namespace Teddit
                 string iconFull = System.IO.Path.IsPathRooted(iconPath) || string.IsNullOrEmpty(modDir)
                     ? iconPath
                     : System.IO.Path.Combine(modDir, iconPath);
-                var loaded = FacilityCreator.LoadSprite(iconFull, id);
+                var loaded = FacilityCreator.LoadSprite(iconFull, id, IconKind.Resource, IconLayout.FromDef(def));
                 if (loaded != null)
                     return loaded;
             }

@@ -204,7 +204,7 @@ namespace Teddit
 
         // ── TMP sprite registration ───────────────────────────────────────────────
 
-        internal static void RegisterSpriteWithTMP(string spriteName, Texture2D tex)
+        internal static void RegisterSpriteWithTMP(string spriteName, Texture2D tex, IconKind kind = IconKind.Facility, IconLayout layout = null)
         {
             try
             {
@@ -232,6 +232,8 @@ namespace Teddit
                 // The existing asset uses a Texture2D spriteSheet. We can't easily share one
                 // atlas texture. Instead: create a new per-sprite asset (no CreateInstance —
                 // use Instantiate to clone an already-upgraded asset, then replace its data).
+                tex = IconMetrics.WithMipmaps(tex);
+
                 var clone = UnityEngine.Object.Instantiate(target);
                 clone.name = spriteName;
                 clone.spriteSheet = tex;
@@ -241,17 +243,9 @@ namespace Teddit
                 var cloneGlyphs = new List<TMP_SpriteGlyph>();
                 var cloneChars  = new List<TMP_SpriteCharacter>();
 
-                var refGlyph = GetReferenceGlyph(target);
-                var refMetrics = refGlyph != null
-                    ? refGlyph.metrics
-                    : new UnityEngine.TextCore.GlyphMetrics(36f, 36f, 0f, 36f, 36f);
-
-                var glyph = new TMP_SpriteGlyph();
-                glyph.index      = 0;
-                glyph.metrics    = refMetrics;
-                glyph.glyphRect  = new UnityEngine.TextCore.GlyphRect(0, 0, tex.width, tex.height);
-                glyph.scale      = refGlyph != null ? refGlyph.scale : 1f;
-                glyph.atlasIndex = 0;
+                // Size and spacing come from a vanilla icon of the same kind, not
+                // from the donor asset, which is always a facility icon.
+                var glyph = IconMetrics.BuildGlyph(tex, kind, layout);
                 cloneGlyphs.Add(glyph);
 
                 var character = new TMP_SpriteCharacter(0, glyph);
@@ -351,21 +345,7 @@ namespace Teddit
             return false;
         }
 
-        static TMP_SpriteGlyph GetReferenceGlyph(TMP_SpriteAsset asset)
-        {
-            if (asset?.spriteGlyphTable == null)
-                return null;
-            foreach (var glyph in asset.spriteGlyphTable)
-            {
-                if (glyph == null)
-                    continue;
-                if (glyph.metrics.height > 0f && glyph.metrics.horizontalAdvance > 0f)
-                    return glyph;
-            }
-            return asset.spriteGlyphTable.Count > 0 ? asset.spriteGlyphTable[0] : null;
-        }
-
-        internal static void EnsureSpriteRegisteredWithTMP(Sprite sprite, string spriteNameOverride = null)
+        internal static void EnsureSpriteRegisteredWithTMP(Sprite sprite, string spriteNameOverride = null, IconKind kind = IconKind.Facility, IconLayout layout = null)
         {
             if (sprite == null) return;
             string spriteName = string.IsNullOrEmpty(spriteNameOverride) ? sprite.name : spriteNameOverride;
@@ -393,7 +373,7 @@ namespace Teddit
 
             Texture2D tex = ExtractTexture(sprite, spriteName);
             if (tex != null)
-                RegisterSpriteWithTMP(spriteName, tex);
+                RegisterSpriteWithTMP(spriteName, tex, kind, layout);
         }
 
         static Texture2D ExtractTexture(Sprite sprite, string textureName)
@@ -448,7 +428,7 @@ namespace Teddit
             return string.IsNullOrEmpty(sprite?.name) ? null : sprite.name;
         }
 
-        internal static Sprite ResolveConfiguredSprite(Dictionary<string, JToken> def, string modDir, string spriteName, Sprite fallback)
+        internal static Sprite ResolveConfiguredSprite(Dictionary<string, JToken> def, string modDir, string spriteName, Sprite fallback, IconKind kind = IconKind.Facility)
         {
             string iconRef = GetVal<string>(def, "iconRef", null);
             if (!string.IsNullOrEmpty(iconRef))
@@ -466,7 +446,7 @@ namespace Teddit
                 string iconFull = Path.IsPathRooted(iconRelPath) || string.IsNullOrEmpty(modDir)
                     ? iconRelPath
                     : Path.Combine(modDir, iconRelPath);
-                var loaded = LoadSprite(iconFull, spriteName);
+                var loaded = LoadSprite(iconFull, spriteName, kind, IconLayout.FromDef(def));
                 if (loaded != null)
                     return loaded;
             }
@@ -544,7 +524,7 @@ namespace Teddit
             try { return t.Value<T>(); } catch { return fallback; }
         }
 
-        internal static Sprite LoadSprite(string fullPath, string spriteName)
+        internal static Sprite LoadSprite(string fullPath, string spriteName, IconKind kind = IconKind.Facility, IconLayout layout = null)
         {
             if (!File.Exists(fullPath))
             {
@@ -570,7 +550,7 @@ namespace Teddit
                 var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f, 0u, SpriteMeshType.FullRect);
                 sprite.name = spriteName;
                 Plugin.Log.LogInfo($"[FacilityCreator] Loaded icon ({tex.width}x{tex.height} {fmt}): {Path.GetFileName(fullPath)}");
-                RegisterSpriteWithTMP(spriteName, tex);
+                RegisterSpriteWithTMP(spriteName, tex, kind, layout);
                 return sprite;
             }
             catch (Exception ex)

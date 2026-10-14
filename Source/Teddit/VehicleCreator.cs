@@ -257,7 +257,7 @@ namespace Teddit
 
         static Sprite LoadVehicleSprite(Dictionary<string, JToken> def, string modDir, string id)
         {
-            return FacilityCreator.ResolveConfiguredSprite(def, modDir, id, null);
+            return FacilityCreator.ResolveConfiguredSprite(def, modDir, id, null, IconKind.Vehicle);
         }
 
         static Sprite FallbackSprite<T>(List<T> list, Func<T, Sprite> getter) where T : class
