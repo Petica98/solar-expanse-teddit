@@ -100,7 +100,7 @@ namespace Teddit
         static readonly HashSet<string> _complexVehicleKeys = new HashSet<string>
         {
             "buildCost", "buildResources",
-            "name", "description", "icon", "iconRef", "fuelType",
+            "name", "description", "icon", "iconRef", "iconLayout", "fuelType",
         };
 
         // These keys are handled by ApplyFacilityComplexFields — skip them in the generic patcher
@@ -112,14 +112,14 @@ namespace Teddit
             "labBonusToResearchInPerHour", "labResearchSubTypeId", "labIdToBonus",
             "facilityOrModuleToInstall", "isSpaceConstructionOnOrbitSpaceCraftToCreate", "isSpaceConstructionOnOrbitLaunchVehicleCanUse",
             // Creation-only keys that aren't real field names on the descriptor
-            "icon", "iconRef", "name", "description", "capabilities", "facilityType", "possiblePlacement",
+            "icon", "iconRef", "iconLayout", "name", "description", "capabilities", "facilityType", "possiblePlacement",
             "specialAbility", "energyProduction", "energyStorage", "solarPanels", "windPower", "geothermal", "buildCost", "facilityItemClass",
             "canBuildBy", "countOnPlanet",
         };
 
         static readonly HashSet<string> _complexResourceKeys = new HashSet<string>
         {
-            "icon", "iconRef", "name", "description", "showInMarket", "cloneFrom",
+            "icon", "iconRef", "iconLayout", "name", "description", "showInMarket", "cloneFrom",
             "terraformationInfo", "toxicityCurve",
         };
 
@@ -1027,7 +1027,7 @@ namespace Teddit
         {
             "requirementsResearch", "unlocks", "newViewResearchTreeParent", "replaceUnlocks",
             // creation-only / sprite keys that aren't plain fields on ResearchDefinition
-            "researchType", "researchSubType", "name", "description", "icon",
+            "researchType", "researchSubType", "name", "description", "icon", "iconLayout",
         };
 
         public static void RunResearch(Dictionary<string, Dictionary<string, JToken>> config, string modDir)
@@ -1184,8 +1184,13 @@ namespace Teddit
                     string iconFull = System.IO.Path.IsPathRooted(iconRelPath)
                         ? iconRelPath
                         : System.IO.Path.Combine(modDir, iconRelPath);
-                    var sprite = FacilityCreator.LoadSprite(iconFull, id);
-                    if (sprite != null) rd.Sprite = sprite;
+                    var sprite = FacilityCreator.LoadSprite(iconFull, id, IconKind.Research, IconLayout.FromDef(fields));
+                    if (sprite != null)
+                    {
+                        rd.Sprite = sprite;
+                        // Inline <sprite name=...> tags use the spriteId string, not Sprite.name.
+                        FacilityCreator.SetField(rd, "spriteId", id);
+                    }
                 }
             }
 
