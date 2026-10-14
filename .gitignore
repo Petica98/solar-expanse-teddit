@@ -54,3 +54,6 @@ obj/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Temp
+temp/

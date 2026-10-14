@@ -364,12 +364,15 @@ namespace Teddit
 
                         if (requiresEquipment && slotIndex < slotEfficiencies.Count)
                         {
-                            buildingModule[i].UpdateBuilding((float)slotEfficiencies[slotIndex], totalDays, slotIndex);
+                            buildingModule[i].UpdateBuilding((
+                                float)slotEfficiencies[slotIndex],
+                                (double)totalDays,
+                                slotIndex);
                             slotIndex++;
                         }
                         else
                         {
-                            buildingModule[i].UpdateBuilding(1f, totalDays, 0);
+                            buildingModule[i].UpdateBuilding(1f, (double)totalDays, 0);
                         }
                     }
 
